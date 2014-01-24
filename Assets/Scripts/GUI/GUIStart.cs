@@ -10,17 +10,22 @@ public class GUIStart : MonoBehaviour {
 	//intro music
 	//public AudioClip intro;
 	//GUI Style
-	private GUIStyle style;
+	public GUIStyle style;
 
 	// Use this for initialization
 	void Start () {
 		style.normal.textColor = Color.white;
+
 		style.fontSize = 20;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		GUI.DrawTexture ( new Rect (280, 30, 400, 540), startScreen, ScaleMode.ScaleToFit, true);
 
+
+	}
+
+	void OnGUI() {
+		GUI.DrawTexture (new Rect (280, 30, 400, 540), startScreen, ScaleMode.ScaleToFit, true);
 	}
 }
