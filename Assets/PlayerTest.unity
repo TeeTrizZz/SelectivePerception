@@ -408,6 +408,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotSpeed: 100
+  continueJump: 0
+  speedJumpStart: .0500000007
+  jumpHeight: 0
+  gravity: .00100000005
+  startPosYAxis: 0
 --- !u!143 &1865924136
 CharacterController:
   m_ObjectHideFlags: 0
