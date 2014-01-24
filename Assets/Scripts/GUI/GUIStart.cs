@@ -8,7 +8,7 @@ public class GUIStart : MonoBehaviour {
 	//start scene texture
 	public Texture startScreen;
 	//intro music
-	public AudioClip intro;
+	//public AudioClip intro;
 	//GUI Style
 	private GUIStyle style;
 
