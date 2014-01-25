@@ -27,13 +27,6 @@ public class GUIScene : MonoBehaviour {
 	
 	}
 
-<<<<<<< HEAD
-	void OnGUI() {	
-		if (GUI.Button (new Rect (Screen.width / 2, Screen.height / 2, 105, 105), skill)) {
-				if (!toggleState) {
-						toggleState = true;
-						startTime = Time.time; //save start time after clicking the button
-=======
 	void OnGUI() {
 			
 				//if (GUI.Button (new Rect (Screen.width / 2, Screen.height / 2, 105, 105), skill)) {
@@ -52,18 +45,6 @@ public class GUIScene : MonoBehaviour {
 					if (dif < 0) {
 						toggleState = false;
 					}
->>>>>>> 0f89abb454daba68e9421f79fbee524b23fe2164
 				}
 		}
-
-		//show cooldown time
-		if (toggleState) {
-			int dif = Mathf.RoundToInt(coolDown - (Time.time - startTime));
-			GUI.Label (new Rect (Screen.width / 2, Screen.height / 2, 105, 105), dif.ToString(), style);
-
-			if (dif < 0) {
-				toggleState = false;
-			}
-		}
-	}
 }
