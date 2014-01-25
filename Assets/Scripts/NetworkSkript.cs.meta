@@ -2,7 +2,8 @@ fileFormatVersion: 2
 guid: cd15d1de67d654d2ebd907d7c606f572
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - TrapSpark: {fileID: 100000, guid: 5f2e920f64d324582991019c138bd8e3, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

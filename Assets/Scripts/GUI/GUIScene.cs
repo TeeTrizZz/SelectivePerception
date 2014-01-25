@@ -27,22 +27,22 @@ public class GUIScene : MonoBehaviour {
 	
 	}
 
-	void OnGUI() {
-			
-				if (GUI.Button (new Rect (Screen.width / 2, Screen.height / 2, 105, 105), skill)) {
-						if (!toggleState) {
-								toggleState = true;
-								startTime = Time.time; //save start time after clicking the button
-						}
-				}
-				//show cooldown time
-				if (toggleState) {
-					int dif = Mathf.RoundToInt(coolDown - (Time.time - startTime));
-					GUI.Label (new Rect (Screen.width / 2, Screen.height / 2, 105, 105), dif.ToString(), style);
-
-					if (dif < 0) {
-						toggleState = false;
-					}
+	void OnGUI() {	
+		if (GUI.Button (new Rect (Screen.width / 2, Screen.height / 2, 105, 105), skill)) {
+				if (!toggleState) {
+						toggleState = true;
+						startTime = Time.time; //save start time after clicking the button
 				}
 		}
+
+		//show cooldown time
+		if (toggleState) {
+			int dif = Mathf.RoundToInt(coolDown - (Time.time - startTime));
+			GUI.Label (new Rect (Screen.width / 2, Screen.height / 2, 105, 105), dif.ToString(), style);
+
+			if (dif < 0) {
+				toggleState = false;
+			}
+		}
+	}
 }
