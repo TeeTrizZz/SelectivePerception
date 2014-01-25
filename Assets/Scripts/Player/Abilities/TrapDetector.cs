@@ -4,7 +4,7 @@ using System.Collections;
 public class TrapDetector : MonoBehaviour {
 	static public bool abilityButtonPressed;
 	float startTime;
-	float durationAbility = 5f;
+	float durationAbility = 4f;
 	bool count;
 
 	void Start () {
@@ -14,7 +14,7 @@ public class TrapDetector : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		abilityButtonPressed = GUIScene.toggleState;
+		abilityButtonPressed = GUIScene.doAbility;
 		//If Ability-Button is pressed
 		if(abilityButtonPressed == true)
 		{
@@ -36,6 +36,7 @@ public class TrapDetector : MonoBehaviour {
 				tempRend.renderer.material.color = Color.red;
 			}
 		}
+		startTime = Time.time;
 		count = true;
 	}
 	void TrapNormal()

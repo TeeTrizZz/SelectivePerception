@@ -202,7 +202,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 88296022}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -.564932823, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1176748351}
@@ -622,7 +622,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd15d1de67d654d2ebd907d7c606f572, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TrapSpark: {fileID: 100000, guid: 0b4cf7098391c4c899f374685c4ee513, type: 2}
+  TrapSpark: {fileID: 100002, guid: d28d85257a4ca463485aa3ab578b1bbd, type: 2}
   Cam: {fileID: 100000, guid: e72657b564b80574dbcd05a063bb3fb7, type: 2}
 --- !u!4 &1426507164
 Transform:

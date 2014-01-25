@@ -8,7 +8,7 @@ public class UVElements : MonoBehaviour {
 	public Component[] textMesh;
 	static public bool abilityButtonPressed;
 	float startTime;
-	float durationAbility = 5f;
+	float durationAbility = 4f;
 	bool count;
 	
 	void Start () {
@@ -16,9 +16,9 @@ public class UVElements : MonoBehaviour {
 		//Get the Parent Object of all the UV-Text-Elements
 		text = GameObject.Find("UVVisionElements");
 	}
-	void update()
+	void Update()
 	{
-		abilityButtonPressed = GUIScene.toggleState;
+		abilityButtonPressed = GUIScene.doAbility;
 		//If Ability-Button is pressed
 		if(abilityButtonPressed == true)
 		{
@@ -37,6 +37,7 @@ public class UVElements : MonoBehaviour {
 		foreach (MeshRenderer texMe in textMesh) {
 			texMe.enabled = true;
 		}
+		startTime = Time.time;
 		count = true;
 	}
 	void disableUVView()
