@@ -5,7 +5,7 @@ public class PlayerMove : MonoBehaviour {
 
 	static public int speed = 5;
 	public float rotSpeed = 100f;
-	public bool continueJump = false;
+	static public bool continueJump = false;
 	public float speedJumpStart = 0.05f;
 	public float jumpHeight;
 	public float gravity = 0.001f;
@@ -31,7 +31,12 @@ public class PlayerMove : MonoBehaviour {
 		}
 		if (Input.GetAxis ("Jump") != 0 || continueJump == true) {
 			continueJump = true;
+			if(this.gameObject.name == "JumpingSpark")
+			{
+				JumpingSparkMove.jumpHighSpark(startPosYAxis, this.gameObject.transform);
+			}else{
 				jump(startPosYAxis);
+			}
 		}
 	}
 	void jump(float startPosY)
