@@ -1,24 +1,42 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class LevelGen : MonoBehaviour {
 
     public GameObject _wall;
     public GameObject _ground;
     public GameObject _light;
+    public GameObject _trap;
+    public GameObject _wire;
 	public GameObject Char;
 
-	void Start () {
+    private float startX = 0f;
+    private float startZ = 0f;
 
-	}
+    private PlayerMove moveScript;
+    private List<Vector3> emptyFields;
+
 
 	void Update () {
-	
+        if (moveScript != null && moveScript.SetMeBack)
+        {
+            Char.transform.position = new Vector3(startX, 0.4f, startZ);
+            moveScript.SetYouBack();
+        }
+
+        if (moveScript != null && moveScript.SetMeSomeWhere)
+        {
+            int randomIndex = Random.Range(0, emptyFields.Count-1);
+            Char.transform.position = emptyFields[randomIndex];
+            moveScript.SetYouBack();
+        }
 	}
 
     public void SetChar(GameObject _char)
     {
         Char = _char;
+        moveScript = Char.GetComponent<PlayerMove>();
     }
 
     public void Init()
@@ -49,15 +67,16 @@ public class LevelGen : MonoBehaviour {
         var posX = 0f;
         var posZ = 0f;
 
-        var startX = 0f;
-        var startZ = 0f;
-
         // level
+        emptyFields = new List<Vector3>();
+
         var aStrings = iniData.Split('\n');
         foreach (var line in aStrings)
         {
-            foreach (var part in line)
+            for (var p = 0; p < line.Length; p++)
             {
+                var part = line[p];
+
                 var tmpObj = _ground;
                 var posY = 0f;
 
@@ -65,11 +84,15 @@ public class LevelGen : MonoBehaviour {
                 {
                     case '0':
                         tmpObj = _ground;
+                        emptyFields.Add(new Vector3(posX, 0.4f, posZ));
+
                         break;
+
                     case '1':
                         posY = 0.5f;
                         tmpObj = _wall;
                         break;
+
                     case '2':
                         tmpObj = _ground;
 
@@ -77,9 +100,22 @@ public class LevelGen : MonoBehaviour {
                         startZ = posZ;
 
                         break;
+
+                    case '4':
+                        tmpObj = _trap;
+                        break;
+
+                    case '5':
+                        tmpObj = _wire;
+                        break;
                 }
 
-                Instantiate(tmpObj, new Vector3(posX, posY, posZ), Quaternion.identity);
+                var quat = Quaternion.identity;
+                if (p > 0 && p < line.Length - 1)
+                    if (line[p - 1] != '0' || line[p + 1] != '0')
+                        quat = Quaternion.AngleAxis(90, new Vector3(0, 1, 0));
+
+                Instantiate(tmpObj, new Vector3(posX, posY, posZ), quat);
 
                 posZ += 1;
             }
