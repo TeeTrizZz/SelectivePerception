@@ -15,12 +15,13 @@ public class JumpingSparkMove : MonoBehaviour {
 	void update()
 	{
 		abilityButtonPressed = GUIScene.toggleState;
+		//If Ability-Button is pressed
 		if(abilityButtonPressed == true)
 		{
 			JumpingSparkMove.jumpHighSpark(startPosY, this.gameObject.transform);
 		}
 	}
-
+	//special skill: Jump high to achieve an aerial perspective to get an overview over the labyrinth
 public static void jumpHighSpark(float startPosY, Transform tempChar)
 	{
 		continueJumpSpark = true;

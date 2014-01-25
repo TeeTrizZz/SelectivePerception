@@ -24,16 +24,21 @@ public class PlayerMove : MonoBehaviour {
 
 	void move()
 	{
+		//Walk forward
 		if (Input.GetAxis ("Vertical") != 0) {
 			transform.Translate (Vector3.forward * Input.GetAxis ("Vertical") * Time.deltaTime * speed, Space.Self);
-		} if (Input.GetAxis ("Horizontal") != 0) {
+		} 
+		//Rotate
+		if (Input.GetAxis ("Horizontal") != 0) {
 			transform.Rotate(Vector3.up * Input.GetAxis ("Horizontal")* rotSpeed * Time.deltaTime, Space.Self);
 		}
+		//Jump
 		if (Input.GetAxis ("Jump") != 0 || continueJump == true) {
 				continueJump = true;
 				jump(startPosYAxis);
 		}
 	}
+	//Jump function
 	void jump(float startPosY)
 	{
 		continueJump = true;

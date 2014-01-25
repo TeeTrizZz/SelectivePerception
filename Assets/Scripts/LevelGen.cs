@@ -6,8 +6,11 @@ public class LevelGen : MonoBehaviour {
     public GameObject _wall;
     public GameObject _ground;
     public GameObject _light;
+	public GameObject Char;
 
 	void Start () {
+		Char = GameObject.FindWithTag("Player");
+
         var filename1 = "Assets/Level/Level.txt";
         var filename2 = "Assets/Level/Light.txt";
 
@@ -78,7 +81,7 @@ public class LevelGen : MonoBehaviour {
             posX += 10;
         }
 
-        transform.position = new Vector3(startX, 4, startZ);
+		Char.transform.position = new Vector3(startX, 4, startZ);
     }
 
     void LoadLight(string pathname)
