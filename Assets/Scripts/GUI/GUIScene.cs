@@ -32,7 +32,6 @@ public class GUIScene : MonoBehaviour {
 
 	void OnGUI() {
 			
-				//if (GUI.Button (new Rect (Screen.width / 2, Screen.height / 2, 105, 105), skill)) {
 				if (GUI.Button (new Rect (5 , 5, 105, 105), skill)) {
 					if (!toggleState) {
 								toggleState = true;
@@ -44,7 +43,6 @@ public class GUIScene : MonoBehaviour {
 				if (toggleState) {
 					
 					dif = Mathf.RoundToInt(coolDown - (Time.time - startTime));
-					//GUI.Label (new Rect (Screen.width / 2, Screen.height / 2, 105, 105), dif.ToString(), style);
 					GUI.Label (new Rect (5, 5, 105, 105), dif.ToString(), style);
 					if (dif<=coolDown-1) {
 						doAbility = false;

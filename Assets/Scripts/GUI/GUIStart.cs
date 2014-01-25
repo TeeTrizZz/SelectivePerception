@@ -20,6 +20,9 @@ public class GUIStart : MonoBehaviour {
 	public float coverX;
 	public float coverY;
 
+	bool showButtons = true;
+	bool showCredits = false;
+
 	// Use this for initialization
 	void Start () {
 		style.normal.textColor = Color.white;
@@ -62,16 +65,32 @@ public class GUIStart : MonoBehaviour {
 		GUI.BeginGroup (rectResult);
 		GUI.DrawTexture (new Rect (0, 0, rectResult.width, rectResult.height), txrBackground, ScaleMode.StretchToFill);
 		GUI.BeginGroup (new Rect ((pxDesiredX/2)-((pxDesiredX*0.76f)/2), (pxDesiredY/2)-((pxDesiredY*0.76f)/2), pxDesiredX*0.76f, pxDesiredY*0.76f));
-		if (GUI.Button (new Rect(0,0,pxDesiredX*0.76f, (pxDesiredY*0.76f)/5), "Start Server")) {
+
+		if (showButtons) {
+							if (GUI.Button (new Rect (0, 0, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / 5), "Start Server")) {
+							}
+							if (GUI.Button (new Rect (0, (pxDesiredY * 0.76f) / 5, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / 5), "Find Host")) {
+							}
+							if (GUI.Button (new Rect (0, (2 * pxDesiredY * 0.76f) / 5, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / 5), "Options")) {
+							}
+							if (GUI.Button (new Rect (0, (3 * pxDesiredY * 0.76f) / 5, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / 5), "Credits")) {
+				showButtons = false;
+				showCredits = true;
+
+							}
+							if (GUI.Button (new Rect (0, (4 * pxDesiredY * 0.76f) / 5, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / 5), "Exit")) {
+									Application.Quit ();
+									//is ignored in editor and webplayer
+							}
+				}
+		if (showCredits) {
+			if (GUI.Button (new Rect (0, (4 * pxDesiredY * 0.76f) / 5, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / 5), "Back")) {
+				showCredits = false;
+				showButtons = true;
+			}
+
 		}
-		if (GUI.Button (new Rect(0,(pxDesiredY*0.76f)/5,pxDesiredX*0.76f, (pxDesiredY*0.76f)/5), "Find Host")) {
-		}
-		if (GUI.Button (new Rect(0,(2*pxDesiredY*0.76f)/5,pxDesiredX*0.76f, (pxDesiredY*0.76f)/5), "Options")) {
-		}
-		if (GUI.Button (new Rect(0,(3*pxDesiredY*0.76f)/5,pxDesiredX*0.76f, (pxDesiredY*0.76f)/5), "Credits")) {
-		}
-		if (GUI.Button (new Rect(0,(4*pxDesiredY*0.76f)/5,pxDesiredX*0.76f, (pxDesiredY*0.76f)/5), "Exit")) {
-		}
+
 		GUI.EndGroup ();
 
 
