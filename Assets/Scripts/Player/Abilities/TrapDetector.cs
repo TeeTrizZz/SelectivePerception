@@ -2,9 +2,32 @@
 using System.Collections;
 
 public class TrapDetector : MonoBehaviour {
+	static public bool abilityButtonPressed = true;
+	float startTime;
+	float durationAbility = 10f;
+	bool count;
 
 	void Start () {
 
+
+	}
+	
+	// Update is called once per frame
+	void Update () {
+		//abilityButtonPressed = GUIScene.toggleState;
+		//If Ability-Button is pressed
+		if(abilityButtonPressed == true)
+		{
+			detectTrap();
+		}
+		if(count == true)
+		{
+			counter();
+		}
+	}
+
+	void detectTrap()
+	{
 		foreach(GameObject TrabObj in GameObject.FindObjectsOfType<GameObject>())
 		{
 			if(TrabObj.name == "TrapPlane(Clone)")
@@ -13,10 +36,26 @@ public class TrapDetector : MonoBehaviour {
 				tempRend.renderer.material.color = Color.red;
 			}
 		}
+		count = true;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+	void TrapNormal()
+	{
+		foreach(GameObject TrabObj in GameObject.FindObjectsOfType<GameObject>())
+		{
+			if(TrabObj.name == "TrapPlane(Clone)")
+			{
+				Renderer tempRend = TrabObj.GetComponent<Renderer>();
+				tempRend.renderer.material.color = Color.white;
+			}
+		}
+		count = false;
+	}
+	void counter()
+	{
+		int dif = Mathf.RoundToInt(durationAbility - (Time.time - startTime));
+		Debug.Log(dif);
+		if (dif < 0) {
+			TrapNormal();
+		}
 	}
 }

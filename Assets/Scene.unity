@@ -139,6 +139,7 @@ GameObject:
   - 124: {fileID: 471848292}
   - 81: {fileID: 471848291}
   - 114: {fileID: 471848296}
+  - 114: {fileID: 471848297}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -218,6 +219,77 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c06c513ad5b764cafadbf06ec2e7c1fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &471848297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 471848290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4f07df4fff7d1b4e9b7b3229578546f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skill: {fileID: 0}
+  style:
+    m_Name: 
+    m_Normal:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Hover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Active:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Focused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnNormal:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnHover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnActive:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnFocused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Margin:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Padding:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Overflow:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Font: {fileID: 0}
+    m_FontSize: 0
+    m_FontStyle: 0
+    m_Alignment: 0
+    m_WordWrap: 0
+    m_RichText: 1
+    m_TextClipping: 0
+    m_ImagePosition: 0
+    m_ContentOffset: {x: 0, y: 0}
+    m_FixedWidth: 0
+    m_FixedHeight: 0
+    m_StretchWidth: 1
+    m_StretchHeight: 0
 --- !u!1 &771470548
 GameObject:
   m_ObjectHideFlags: 0
@@ -404,8 +476,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bff88b528f85834ab875deb87ff23dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  rotSpeed: 100
 --- !u!114 &1233977512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -418,8 +488,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bff88b528f85834ab875deb87ff23dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  rotSpeed: 100
 --- !u!1 &1292168001
 GameObject:
   m_ObjectHideFlags: 0
@@ -447,7 +515,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbff8efd9f268a44280604b49d2acc87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 100000, guid: d99115f1ef2c48c408fde6729b0df622, type: 2}
 --- !u!4 &1292168003
 Transform:
   m_ObjectHideFlags: 0
