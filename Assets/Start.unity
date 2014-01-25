@@ -227,6 +227,11 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
+  txrBackground: {fileID: 2800000, guid: 681881b7297b6914fb9cc0776b0dea7f, type: 3}
+  aspectX: 1116
+  aspectY: 702
+  coverX: .899999976
+  coverY: .899999976
 --- !u!45 &1624834623
 Skybox:
   m_ObjectHideFlags: 0

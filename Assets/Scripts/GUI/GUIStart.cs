@@ -12,13 +12,16 @@ public class GUIStart : MonoBehaviour {
 	//GUI Style
 	public GUIStyle style;
 
-	Texture2D txrBackground;
+	public Texture2D txrBackground;
 	//the ratio
-	float aspectX;
-	float aspectY;
+	public float aspectX;
+	public float aspectY;
 	//sets a value how much screen should be covered (in percent, e.g.: 90% is 0.9)
-	float coverX;
-	float coverY;
+	public float coverX;
+	public float coverY;
+
+	bool showButtons = true;
+	bool showCredits = false;
 
 	// Use this for initialization
 	void Start () {
@@ -56,30 +59,43 @@ public class GUIStart : MonoBehaviour {
 
 		Rect rectResult = new Rect (pxBorderX / 2, pxBorderY / 2, pxDesiredX, pxDesiredY);
 
+		Debug.Log (pxDesiredX);
+
+
 		GUI.BeginGroup (rectResult);
+		GUI.DrawTexture (new Rect (0, 0, rectResult.width, rectResult.height), txrBackground, ScaleMode.StretchToFill);
+		GUI.BeginGroup (new Rect ((pxDesiredX/2)-((pxDesiredX*0.76f)/2), (pxDesiredY/2)-((pxDesiredY*0.76f)/2), pxDesiredX*0.76f, pxDesiredY*0.76f));
 
+		if (showButtons) {
+							if (GUI.Button (new Rect (0, 0, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / 5), "Start Server")) {
+							}
+							if (GUI.Button (new Rect (0, (pxDesiredY * 0.76f) / 5, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / 5), "Find Host")) {
+							}
+							if (GUI.Button (new Rect (0, (2 * pxDesiredY * 0.76f) / 5, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / 5), "Options")) {
+							}
+							if (GUI.Button (new Rect (0, (3 * pxDesiredY * 0.76f) / 5, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / 5), "Credits")) {
+				showButtons = false;
+				showCredits = true;
 
-		/*
-		float width = Screen.width / 1.1f;
-		float height = Screen.height / 1.3f;
+							}
+							if (GUI.Button (new Rect (0, (4 * pxDesiredY * 0.76f) / 5, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / 5), "Exit")) {
+									Application.Quit ();
+									//is ignored in editor and webplayer
+							}
+				}
+		if (showCredits) {
+			if (GUI.Button (new Rect (0, (4 * pxDesiredY * 0.76f) / 5, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / 5), "Back")) {
+				showCredits = false;
+				showButtons = true;
+			}
 
-		float dWidth = (Screen.width - width) / 2;
-		float dHeight = (Screen.height - height) / 2;
-
-		
-	
-
-		GUI.BeginGroup (new Rect (dWidth, dHeight, Screen.width, Screen.height));
-
-
-
-		GUI.DrawTexture (new Rect (0, 0, width, height), startScreen, ScaleMode.ScaleToFit, true);
-		                
-		if (GUI.Button (new Rect(Screen.width/2 -150 ,Screen.height/2 - 30,150,30), "Start")) {
-			Application.LoadLevel (levelName);
 		}
 
 		GUI.EndGroup ();
-*/
+
+
+		GUI.EndGroup ();
+
+
 	}
 }

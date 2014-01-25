@@ -9,14 +9,14 @@ public class NightView : MonoBehaviour {
 	GameObject character;
 	Transform Temp;
 	float startTime;
-	float durationAbility = 5f;
+	float durationAbility = 4f;
 
 	void Start () {
 		character = GameObject.FindWithTag("Player");
 	}
 
 	void Update () {
-		abilityButtonPressed = GUIScene.toggleState;
+		abilityButtonPressed = GUIScene.doAbility;
 		//If Ability-Button is pressed
 		if(abilityButtonPressed == true)
 		{
