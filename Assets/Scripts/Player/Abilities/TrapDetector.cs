@@ -2,7 +2,11 @@
 using System.Collections;
 
 public class TrapDetector : MonoBehaviour {
-	static public bool abilityButtonPressed;
+	static public bool abilityButtonPressed = true;
+	float startTime;
+	float durationAbility = 10f;
+	bool count;
+
 	void Start () {
 
 
@@ -10,14 +14,15 @@ public class TrapDetector : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		abilityButtonPressed = GUIScene.toggleState;
+		//abilityButtonPressed = GUIScene.toggleState;
 		//If Ability-Button is pressed
 		if(abilityButtonPressed == true)
 		{
 			detectTrap();
 		}
-		else{
-			TrapNormal();
+		if(count == true)
+		{
+			counter();
 		}
 	}
 
@@ -31,6 +36,7 @@ public class TrapDetector : MonoBehaviour {
 				tempRend.renderer.material.color = Color.red;
 			}
 		}
+		count = true;
 	}
 	void TrapNormal()
 	{
@@ -41,6 +47,15 @@ public class TrapDetector : MonoBehaviour {
 				Renderer tempRend = TrabObj.GetComponent<Renderer>();
 				tempRend.renderer.material.color = Color.white;
 			}
+		}
+		count = false;
+	}
+	void counter()
+	{
+		int dif = Mathf.RoundToInt(durationAbility - (Time.time - startTime));
+		Debug.Log(dif);
+		if (dif < 0) {
+			TrapNormal();
 		}
 	}
 }
