@@ -6,7 +6,7 @@ public class JumpingSparkMove : MonoBehaviour {
 	static public bool continueJumpSpark = false;
 	static float jumpSparkSpeed = 0.50f;
 	public static float jumpSparkHeight = jumpSparkSpeed;
-	static public bool abilityButtonPressed = true;
+	static public bool abilityButtonPressed;
 	float startPosY;
 	void start()
 	{
@@ -14,7 +14,7 @@ public class JumpingSparkMove : MonoBehaviour {
 	}
 	void update()
 	{
-		//abilityButtonPressed = GUIScene.toggleState;
+		abilityButtonPressed = GUIScene.toggleState;
 		//If Ability-Button is pressed
 		if(abilityButtonPressed == true)
 		{
@@ -28,7 +28,6 @@ public class JumpingSparkMove : MonoBehaviour {
 	//special skill: Jump high to achieve an aerial perspective to get an overview over the labyrinth
 	public void jumpHighSpark(float startPosY, Transform tempChar)
 	{
-		abilityButtonPressed = false;
 		continueJumpSpark = true;
 		jumpSparkHeight = jumpSparkHeight-jumpSparkGravity;
 		tempChar.Translate(Vector3.up*jumpSparkHeight);

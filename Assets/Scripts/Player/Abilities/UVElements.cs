@@ -8,7 +8,7 @@ public class UVElements : MonoBehaviour {
 	public Component[] textMesh;
 	static public bool abilityButtonPressed = true;
 	float startTime;
-	float durationAbility = 10f;
+	float durationAbility = 5f;
 	bool count;
 	
 	void Start () {
@@ -37,7 +37,6 @@ public class UVElements : MonoBehaviour {
 		foreach (MeshRenderer texMe in textMesh) {
 			texMe.enabled = true;
 		}
-		abilityButtonPressed = false;
 		count = true;
 	}
 	void disableUVView()
