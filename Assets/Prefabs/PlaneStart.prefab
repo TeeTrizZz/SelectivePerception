@@ -46,7 +46,7 @@ GameObject:
   - 23: {fileID: 2300000}
   - 65: {fileID: 6500000}
   m_Layer: 0
-  m_Name: PlaneGoal
+  m_Name: PlaneStart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -149,7 +149,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 3
   m_Type: 2
-  m_Color: {r: .788105488, g: .977941155, b: .740646601, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: .600000024
   m_Range: 10
   m_SpotAngle: 30
@@ -349,7 +349,7 @@ ParticleSystem:
         rgba: 4294967295
       maxColor:
         serializedVersion: 2
-        rgba: 1346502400
+        rgba: 2717908991
       minMaxState: 0
     startSize:
       scalar: 1.25
