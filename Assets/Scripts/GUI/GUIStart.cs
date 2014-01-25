@@ -56,33 +56,27 @@ public class GUIStart : MonoBehaviour {
 
 		Rect rectResult = new Rect (pxBorderX / 2, pxBorderY / 2, pxDesiredX, pxDesiredY);
 
+		Debug.Log (pxDesiredX);
+
+
 		GUI.BeginGroup (rectResult);
 		GUI.DrawTexture (new Rect (0, 0, rectResult.width, rectResult.height), txrBackground, ScaleMode.StretchToFill);
-		if (GUI.Button (new Rect (98, 98, rectResult.width, rectResult.height / 5), "Start Server")) {
-				}
-		GUI.EndGroup ();
-
-		/*
-		float width = Screen.width / 1.1f;
-		float height = Screen.height / 1.3f;
-
-		float dWidth = (Screen.width - width) / 2;
-		float dHeight = (Screen.height - height) / 2;
-
-		
-	
-
-		GUI.BeginGroup (new Rect (dWidth, dHeight, Screen.width, Screen.height));
-
-
-
-		GUI.DrawTexture (new Rect (0, 0, width, height), startScreen, ScaleMode.ScaleToFit, true);
-		                
-		if (GUI.Button (new Rect(Screen.width/2 -150 ,Screen.height/2 - 30,150,30), "Start")) {
-			Application.LoadLevel (levelName);
+		GUI.BeginGroup (new Rect ((pxDesiredX/2)-((pxDesiredX*0.76f)/2), (pxDesiredY/2)-((pxDesiredY*0.76f)/2), pxDesiredX*0.76f, pxDesiredY*0.76f));
+		if (GUI.Button (new Rect(0,0,pxDesiredX*0.76f, (pxDesiredY*0.76f)/5), "Start Server")) {
 		}
+		if (GUI.Button (new Rect(0,(pxDesiredY*0.76f)/5,pxDesiredX*0.76f, (pxDesiredY*0.76f)/5), "Find Host")) {
+		}
+		if (GUI.Button (new Rect(0,(2*pxDesiredY*0.76f)/5,pxDesiredX*0.76f, (pxDesiredY*0.76f)/5), "Options")) {
+		}
+		if (GUI.Button (new Rect(0,(3*pxDesiredY*0.76f)/5,pxDesiredX*0.76f, (pxDesiredY*0.76f)/5), "Credits")) {
+		}
+		if (GUI.Button (new Rect(0,(4*pxDesiredY*0.76f)/5,pxDesiredX*0.76f, (pxDesiredY*0.76f)/5), "Exit")) {
+		}
+		GUI.EndGroup ();
+
 
 		GUI.EndGroup ();
-*/
+
+
 	}
 }
