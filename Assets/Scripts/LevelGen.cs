@@ -9,8 +9,20 @@ public class LevelGen : MonoBehaviour {
 	public GameObject Char;
 
 	void Start () {
-		Char = GameObject.FindWithTag("Player");
 
+	}
+
+	void Update () {
+	
+	}
+
+    public void SetChar(GameObject _char)
+    {
+        Char = _char;
+    }
+
+    public void Init()
+    {
         var filename1 = "External/Level/Level.txt";
         var filename2 = "External/Level/Light.txt";
 
@@ -24,11 +36,7 @@ public class LevelGen : MonoBehaviour {
 
         LoadLevel(pathname1);
         LoadLight(pathname2);
-	}
-
-	void Update () {
-	
-	}
+    }
 
     void LoadLevel(string pathname)
     {
