@@ -12,13 +12,13 @@ public class GUIStart : MonoBehaviour {
 	//GUI Style
 	public GUIStyle style;
 
-	Texture2D txrBackground;
+	public Texture2D txrBackground;
 	//the ratio
-	float aspectX;
-	float aspectY;
+	public float aspectX;
+	public float aspectY;
 	//sets a value how much screen should be covered (in percent, e.g.: 90% is 0.9)
-	float coverX;
-	float coverY;
+	public float coverX;
+	public float coverY;
 
 	// Use this for initialization
 	void Start () {
@@ -57,7 +57,10 @@ public class GUIStart : MonoBehaviour {
 		Rect rectResult = new Rect (pxBorderX / 2, pxBorderY / 2, pxDesiredX, pxDesiredY);
 
 		GUI.BeginGroup (rectResult);
-
+		GUI.DrawTexture (new Rect (0, 0, rectResult.width, rectResult.height), txrBackground, ScaleMode.StretchToFill);
+		if (GUI.Button (new Rect (98, 98, rectResult.width, rectResult.height / 5), "Start Server")) {
+				}
+		GUI.EndGroup ();
 
 		/*
 		float width = Screen.width / 1.1f;
