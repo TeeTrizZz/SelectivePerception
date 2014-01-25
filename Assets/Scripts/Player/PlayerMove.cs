@@ -14,8 +14,14 @@ public class PlayerMove : MonoBehaviour {
     float _rotX;
     float delta = 0f;
 
+    public bool SetMeBack;
+    public bool SetMeSomeWhere;
+
 	// Use this for initialization
 	void Start () {
+        SetMeBack = false;
+        SetMeSomeWhere = false;
+
 		jumpHeight = speedJumpStart;
 		startPosYAxis = this.transform.position.y;
 	}
@@ -31,10 +37,7 @@ public class PlayerMove : MonoBehaviour {
         {
             // rotate
             _rotY += Input.GetAxis("Mouse X") * 2.0f;
-            _rotX -= Input.GetAxis("Mouse Y") * 2.0f;
-            _rotX = Mathf.Clamp(_rotX, -50f, 50f);
-
-            this.transform.eulerAngles = new Vector3(_rotX, _rotY, 0);
+            this.transform.eulerAngles = new Vector3(0, _rotY, 0);
 
             //Walk forward
             if (Input.GetAxis("Vertical") != 0)
@@ -73,4 +76,18 @@ public class PlayerMove : MonoBehaviour {
 		}
 	}
 
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Wire")
+            SetMeBack = true;
+
+        if (other.tag == "Trap")
+            SetMeSomeWhere = true;
+    }
+
+    public void SetYouBack()
+    {
+        SetMeBack = false;
+        SetMeSomeWhere = false;
+    }
 }

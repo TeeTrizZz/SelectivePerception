@@ -4,6 +4,9 @@ using System.Collections;
 public class FollowPlayer : MonoBehaviour {
 	private GameObject _char;
 
+    float _rotY;
+    float _rotX;
+
 	// Use this for initialization
 	void Start () {
 
@@ -14,7 +17,13 @@ public class FollowPlayer : MonoBehaviour {
         if (_char != null)
         {
             transform.position = _char.transform.position;
-            transform.rotation = _char.transform.rotation;
+
+            // rotate
+            _rotY = _char.transform.rotation.eulerAngles.y;
+            _rotX -= Input.GetAxis("Mouse Y") * 2.0f;
+            _rotX = Mathf.Clamp(_rotX, -50f, 50f);
+
+            this.transform.eulerAngles = new Vector3(_rotX, _rotY, 0);
         }
 	}
 
