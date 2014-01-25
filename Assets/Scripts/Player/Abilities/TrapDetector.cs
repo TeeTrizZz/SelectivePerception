@@ -35,6 +35,11 @@ public class TrapDetector : MonoBehaviour {
 				Renderer tempRend = TrabObj.GetComponent<Renderer>();
 				tempRend.renderer.material.color = Color.red;
 			}
+			if(TrabObj.name == "stolperfalle(Clone)")
+			{
+				Renderer tempRend = TrabObj.GetComponent<Renderer>();
+				tempRend.renderer.material.color = Color.red;
+			}
 		}
 		startTime = Time.time;
 		count = true;
@@ -44,6 +49,11 @@ public class TrapDetector : MonoBehaviour {
 		foreach(GameObject TrabObj in GameObject.FindObjectsOfType<GameObject>())
 		{
 			if(TrabObj.name == "TrapPlane(Clone)")
+			{
+				Renderer tempRend = TrabObj.GetComponent<Renderer>();
+				tempRend.renderer.material.color = Color.white;
+			}
+			if(TrabObj.name == "stolperfalle(Clone)")
 			{
 				Renderer tempRend = TrabObj.GetComponent<Renderer>();
 				tempRend.renderer.material.color = Color.white;
