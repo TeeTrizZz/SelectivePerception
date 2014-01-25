@@ -294,7 +294,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &486309930
 Transform:
   m_ObjectHideFlags: 0
@@ -1454,11 +1454,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 250bcd305618f4d689e0d8f8b37b2b75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  continueJump: 0
-  speedJumpStart: .0500000007
-  jumpHeight: 0
-  gravity: .00100000005
-  startPosYAxis: 0
 --- !u!54 &486309938
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1486,8 +1481,8 @@ NetworkView:
   m_StateSynchronization: 1
   m_Observed: {fileID: 486309930}
   m_ViewID:
-    m_ID: 0
-    m_Type: 0
+    m_ID: 1
+    m_Type: 1
 --- !u!148 &486309940
 NetworkView:
   m_ObjectHideFlags: 0
@@ -1498,8 +1493,8 @@ NetworkView:
   m_StateSynchronization: 1
   m_Observed: {fileID: 486309930}
   m_ViewID:
-    m_ID: 0
-    m_Type: 0
+    m_ID: 2
+    m_Type: 1
 --- !u!148 &486309941
 NetworkView:
   m_ObjectHideFlags: 0
@@ -1511,8 +1506,8 @@ NetworkView:
   m_StateSynchronization: 1
   m_Observed: {fileID: 486309930}
   m_ViewID:
-    m_ID: 0
-    m_Type: 0
+    m_ID: 3
+    m_Type: 1
 --- !u!1 &1176748350
 GameObject:
   m_ObjectHideFlags: 0
@@ -2909,11 +2904,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 250bcd305618f4d689e0d8f8b37b2b75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  continueJump: 0
-  speedJumpStart: .0500000007
-  jumpHeight: 0
-  gravity: .00100000005
-  startPosYAxis: 0
 --- !u!143 &1556175035
 CharacterController:
   m_ObjectHideFlags: 0
@@ -3026,7 +3016,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!199 &2096018481
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -4126,11 +4116,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 250bcd305618f4d689e0d8f8b37b2b75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  continueJump: 0
-  speedJumpStart: .0500000007
-  jumpHeight: 0
-  gravity: .00100000005
-  startPosYAxis: 0
 --- !u!143 &2096018484
 CharacterController:
   m_ObjectHideFlags: 0
@@ -4219,8 +4204,8 @@ NetworkView:
   m_StateSynchronization: 1
   m_Observed: {fileID: 2096018487}
   m_ViewID:
-    m_ID: 0
-    m_Type: 0
+    m_ID: 4
+    m_Type: 1
 --- !u!148 &2096018491
 NetworkView:
   m_ObjectHideFlags: 0
@@ -4231,8 +4216,8 @@ NetworkView:
   m_StateSynchronization: 1
   m_Observed: {fileID: 2096018487}
   m_ViewID:
-    m_ID: 0
-    m_Type: 0
+    m_ID: 5
+    m_Type: 1
 --- !u!1001 &2109707333
 Prefab:
   m_ObjectHideFlags: 0

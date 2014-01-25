@@ -46,7 +46,7 @@ Transform:
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 10.5298119, y: 2, z: 61.1525536}
-  m_LocalScale: {x: .100000001, y: .100000001, z: .100000001}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400002}
   m_Father: {fileID: 0}
@@ -133,11 +133,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 250bcd305618f4d689e0d8f8b37b2b75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  continueJump: 0
-  speedJumpStart: .0500000007
-  jumpHeight: 0
-  gravity: .00100000005
-  startPosYAxis: 0
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -148,7 +143,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.5
+  m_Radius: .209999993
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!148 &14800000
 NetworkView:
@@ -179,7 +174,7 @@ ParticleSystem:
   InitialModule:
     enabled: 1
     startLifetime:
-      scalar: 1
+      scalar: 1.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -339,7 +334,7 @@ ParticleSystem:
         rgba: 4280558847
       minMaxState: 0
     startSize:
-      scalar: 2.61999989
+      scalar: .400000006
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -411,7 +406,7 @@ ParticleSystem:
     serializedVersion: 2
     enabled: 1
     type: 4
-    radius: 1
+    radius: .129999995
     angle: 25
     length: 5
     boxX: 1
