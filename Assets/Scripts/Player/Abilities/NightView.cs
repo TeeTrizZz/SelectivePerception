@@ -3,13 +3,42 @@ using System.Collections;
 
 public class NightView : MonoBehaviour {
 
-	// Use this for initialization
+	static public bool abilityButtonPressed;
+	public Transform prefabSpotlight;
+	GameObject character;
+	Transform Temp;
+
 	void Start () {
-	
+		character = GameObject.FindWithTag("Player");
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
-	
+		abilityButtonPressed = GUIScene.toggleState;
+		//If Ability-Button is pressed
+		if(abilityButtonPressed == true)
+		{
+			activateNightView();
+		}
+		else{
+			deactivateNightView();
+		}
+		if(Temp != null)
+		{
+			Temp.position = character.transform.position;
+			Temp.rotation = character.transform.rotation;
+		}
+	}
+	void activateNightView()
+	{
+		//Instantiate Spotlight 
+		if(Temp == null)
+		{
+		Temp = Instantiate(prefabSpotlight, character.transform.position, Quaternion.identity) as Transform;
+		}
+	}
+	void deactivateNightView()
+	{
+		//Destroy Spotlight
+		Destroy(Temp);
 	}
 }
