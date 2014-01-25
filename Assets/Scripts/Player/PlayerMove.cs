@@ -3,13 +3,12 @@ using System.Collections;
 
 public class PlayerMove : MonoBehaviour {
 
-	static public int speed = 5;
-	public float rotSpeed = 100f;
-	public bool continueJump = false;
-	public float speedJumpStart = 0.05f;
-	public float jumpHeight;
-	public float gravity = 0.001f;
-	public float startPosYAxis;
+    private float speed = 1f;
+    private bool continueJump = false;
+    private float speedJumpStart = 0.03f;
+	private float jumpHeight;
+	private float gravity = 0.0015f;
+    private float startPosYAxis;
 
     float _rotY;
     float _rotX;
@@ -31,8 +30,8 @@ public class PlayerMove : MonoBehaviour {
         if (networkView.isMine)
         {
             // rotate
-            _rotY += Input.GetAxis("Mouse X") * 2.5f;
-            _rotX -= Input.GetAxis("Mouse Y") * 2.5f;
+            _rotY += Input.GetAxis("Mouse X") * 2.0f;
+            _rotX -= Input.GetAxis("Mouse Y") * 2.0f;
             _rotX = Mathf.Clamp(_rotX, -50f, 50f);
 
             this.transform.eulerAngles = new Vector3(_rotX, _rotY, 0);
@@ -41,14 +40,14 @@ public class PlayerMove : MonoBehaviour {
             if (Input.GetAxis("Vertical") != 0)
             {
                 var y = transform.position.y;
-                transform.Translate(Vector3.forward * Input.GetAxis("Vertical") * Time.deltaTime * speed, Space.Self);
+                transform.Translate(transform.forward * Input.GetAxis("Vertical") * Time.deltaTime * speed, Space.World);
                 transform.position = new Vector3(transform.position.x, y, transform.position.z);
             }
 
             //Rotate
             if (Input.GetAxis("Horizontal") != 0)
             {
-                transform.Translate(-Vector3.left * Input.GetAxis("Horizontal") * Time.deltaTime * speed, Space.Self);
+                transform.Translate(transform.right * Input.GetAxis("Horizontal") * Time.deltaTime * speed, Space.World);
             }
 
             //Jump
