@@ -3,7 +3,8 @@ using System.Collections;
 
 public class PlayerTest : MonoBehaviour {
     public float speed = 10f;
- 
+    public float rotSpeed = 100f;
+
     void Update()
     {
         if (networkView.isMine)
