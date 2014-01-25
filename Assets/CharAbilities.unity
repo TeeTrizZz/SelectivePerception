@@ -74,6 +74,68 @@ NavMeshSettings:
     widthInaccuracy: 16.666666
     heightInaccuracy: 10
   m_NavMesh: {fileID: 0}
+--- !u!1 &31776300
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 31776302}
+  - 108: {fileID: 31776301}
+  m_Layer: 0
+  m_Name: Directional light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!108 &31776301
+Light:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 31776300}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Type: 1
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: .5
+  m_Range: 10
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_Strength: 1
+    m_Bias: .0500000007
+    m_Softness: 4
+    m_SoftnessFade: 1
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_ActuallyLightmapped: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 1
+  m_ShadowSamples: 1
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+  m_IndirectIntensity: 1
+  m_AreaSize: {x: 1, y: 1}
+--- !u!4 &31776302
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 31776300}
+  m_LocalRotation: {x: .408217937, y: -.234569728, z: .109381676, w: .875426054}
+  m_LocalPosition: {x: 8.89999962, y: 2, z: 87.6146393}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
 --- !u!1 &88296022
 GameObject:
   m_ObjectHideFlags: 0
@@ -212,7 +274,7 @@ Transform:
   m_PrefabInternal: {fileID: 1985545449}
   m_GameObject: {fileID: 486309929}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.89999962, y: 2, z: 93.4103851}
+  m_LocalPosition: {x: 8.89999962, y: 2, z: 78.846756}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1410999388}
@@ -1365,6 +1427,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotSpeed: 100
+  continueJump: 0
   speedJumpStart: .0500000007
   jumpHeight: 0
   gravity: .00100000005
@@ -1382,6 +1445,7 @@ GameObject:
   - 124: {fileID: 669628471}
   - 81: {fileID: 669628470}
   - 114: {fileID: 669628475}
+  - 114: {fileID: 669628476}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1463,6 +1527,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _wall: {fileID: 100000, guid: 9fe0d0761146346f4b9dd15665738c43, type: 2}
   _ground: {fileID: 100000, guid: d7d208e2ccc5c431b80cb81af856006f, type: 2}
+--- !u!114 &669628476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 669628469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4f07df4fff7d1b4e9b7b3229578546f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &865359856
 Prefab:
   m_ObjectHideFlags: 0
@@ -1480,7 +1555,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: d28d85257a4ca463485aa3ab578b1bbd, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 87.6146393
+      value: 61.1525536
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: d28d85257a4ca463485aa3ab578b1bbd, type: 2}
       propertyPath: m_LocalRotation.x
@@ -1501,6 +1576,10 @@ Prefab:
     - target: {fileID: 10800000, guid: d28d85257a4ca463485aa3ab578b1bbd, type: 2}
       propertyPath: m_Range
       value: 3.20000005
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: d28d85257a4ca463485aa3ab578b1bbd, type: 2}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d28d85257a4ca463485aa3ab578b1bbd, type: 2}
@@ -1677,7 +1756,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 0b4cf7098391c4c899f374685c4ee513, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 93.4103851
+      value: 78.846756
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 0b4cf7098391c4c899f374685c4ee513, type: 2}
       propertyPath: m_LocalRotation.x
@@ -2822,6 +2901,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotSpeed: 100
+  continueJump: 0
   speedJumpStart: .0500000007
   jumpHeight: 0
   gravity: .00100000005
@@ -2869,7 +2949,7 @@ Transform:
   m_PrefabInternal: {fileID: 865359856}
   m_GameObject: {fileID: 2096018480}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.89999962, y: 2, z: 87.6146393}
+  m_LocalPosition: {x: 8.89999962, y: 2, z: 61.1525536}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1324588634}

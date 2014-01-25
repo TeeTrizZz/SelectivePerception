@@ -4,7 +4,7 @@ using System.Collections;
 public class GUIScene : MonoBehaviour {
 
 	//toggle state of the skill button
-	public static boolean toggleState = false;
+	public static bool toggleState = false;
 
 	// Use this for initialization
 	void Start () {
@@ -17,8 +17,6 @@ public class GUIScene : MonoBehaviour {
 	}
 
 	void OnGUI() {
-		if (GUI.Button (new Rect(Screen.width/2 -150 ,Screen.height/2 - 30,150,30), "Start")) {
-			Application.LoadLevel (levelName);
-		}
+
 	}
 }
