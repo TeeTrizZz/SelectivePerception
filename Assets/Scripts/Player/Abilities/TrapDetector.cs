@@ -2,9 +2,9 @@
 using System.Collections;
 
 public class TrapDetector : MonoBehaviour {
-	static public bool abilityButtonPressed = true;
+	static public bool abilityButtonPressed;
 	float startTime;
-	float durationAbility = 10f;
+	float durationAbility = 5f;
 	bool count;
 
 	void Start () {
@@ -14,7 +14,7 @@ public class TrapDetector : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//abilityButtonPressed = GUIScene.toggleState;
+		abilityButtonPressed = GUIScene.toggleState;
 		//If Ability-Button is pressed
 		if(abilityButtonPressed == true)
 		{

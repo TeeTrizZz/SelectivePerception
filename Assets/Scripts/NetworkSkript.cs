@@ -81,8 +81,12 @@ public class NetworkSkript : MonoBehaviour {
     {
         Debug.Log(gameObject);
 
-        Network.Instantiate(TrapSpark, new Vector3(0, 0, 0), Quaternion.identity, 0);
-        Instantiate(Cam, new Vector3(0, 0, 0), Quaternion.identity);
+        var go = (GameObject) Network.Instantiate(TrapSpark, new Vector3(0, 0, 0), Quaternion.identity, 0);
+        var cam = (GameObject) Instantiate(Cam, new Vector3(0, 0, 0), Quaternion.identity);
+
+        cam.GetComponent<LevelGen>().SetChar(go);
+        cam.GetComponent<LevelGen>().Init();
+        cam.GetComponent<FollowPlayer>().SetTarget(go);
     }
 
     public void OnDestroy()

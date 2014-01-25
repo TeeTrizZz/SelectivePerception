@@ -9,6 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400000}
   - 114: {fileID: 11400000}
+  - 114: {fileID: 11400002}
   m_Layer: 0
   m_Name: Cam
   m_TagString: Untagged
@@ -114,6 +115,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c06c513ad5b764cafadbf06ec2e7c1fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11400002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0323bf0a4cf2f401bb69f8db5d9fb95f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _wall: {fileID: 100000, guid: 9fe0d0761146346f4b9dd15665738c43, type: 2}
+  _ground: {fileID: 100000, guid: d7d208e2ccc5c431b80cb81af856006f, type: 2}
+  _light: {fileID: 100000, guid: c46d68bf8e7bc49aeba52e0dc90fae22, type: 2}
+  Char: {fileID: 0}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
