@@ -18,7 +18,7 @@ RenderSettings:
   m_FogDensity: .00999999978
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientLight: {r: .200000003, g: .200000003, b: .200000003, a: 1}
+  m_AmbientLight: {r: .0980392173, g: .0980392173, b: .0980392173, a: 1}
   m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: .5
   m_FlareStrength: 1
@@ -163,8 +163,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 669628469}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77ffd75ab4d62544d8da5570fcebe9bd, type: 3}
+  m_Script: {fileID: 11500000, guid: 0323bf0a4cf2f401bb69f8db5d9fb95f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _wall: {fileID: 100000, guid: 9fe0d0761146346f4b9dd15665738c43, type: 2}
   _ground: {fileID: 100000, guid: d7d208e2ccc5c431b80cb81af856006f, type: 2}
+  _light: {fileID: 100000, guid: e09b028853635e84c8833028d9825d90, type: 2}

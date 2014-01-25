@@ -5,27 +5,46 @@ public class LevelGen : MonoBehaviour {
 
     public GameObject _wall;
     public GameObject _ground;
+    public GameObject _light;
 
 	void Start () {
-        var filename = "Assets/Level/Level.txt";
-        var iniData = "";
+        var filename1 = "Assets/Level/Level.txt";
+        var filename2 = "Assets/Level/Light.txt";
+
         var prefix = "";
 
         if (!Application.isWebPlayer)
             prefix = "file://";
 
-        var pathname = prefix + Application.dataPath + "/../" + filename;
+        var pathname1 = prefix + Application.dataPath + "/../" + filename1;
+        var pathname2 = prefix + Application.dataPath + "/../" + filename2;
+
+        LoadLevel(pathname1);
+        LoadLight(pathname2);
+	}
+
+	void Update () {
+	
+	}
+
+    void LoadLevel(string pathname)
+    {
         var www = new WWW(pathname);
 
         while (!www.isDone) { };
-            
-        iniData = www.text;
+
+        var iniData = www.text;
 
         var posX = 0;
         var posZ = 0;
 
+        var startX = 0;
+        var startZ = 0;
+
+        // level
         var aStrings = iniData.Split('\n');
-	    foreach (var line in aStrings) {
+        foreach (var line in aStrings)
+        {
             foreach (var part in line)
             {
                 var tmpObj = _ground;
@@ -40,6 +59,14 @@ public class LevelGen : MonoBehaviour {
                         posY = 5;
                         tmpObj = _wall;
                         break;
+                    case '2':
+                        posY = 5;
+                        tmpObj = _ground;
+
+                        startX = posX;
+                        startZ = posZ;
+
+                        break;
                 }
 
                 Instantiate(tmpObj, new Vector3(posX, posY, posZ), Quaternion.identity);
@@ -49,10 +76,36 @@ public class LevelGen : MonoBehaviour {
 
             posZ = 0;
             posX += 10;
-	    }
-	}
+        }
 
-	void Update () {
-	
-	}
+        transform.position = new Vector3(startX, 4, startZ);
+    }
+
+    void LoadLight(string pathname)
+    {
+        var www = new WWW(pathname);
+
+        while (!www.isDone) { };
+
+        var iniData = www.text;
+
+        var posX = 0;
+        var posZ = 0;
+
+        // light
+        var aStrings = iniData.Split('\n');
+        foreach (var line in aStrings)
+        {
+            foreach (var part in line)
+            {
+                if (part == '1')
+                    Instantiate(_light, new Vector3(posX, 5, posZ), Quaternion.identity);
+
+                posZ += 10;
+            }
+
+            posZ = 0;
+            posX += 10;
+        }
+    }
 }
