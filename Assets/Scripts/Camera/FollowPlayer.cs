@@ -2,15 +2,7 @@
 using System.Collections;
 
 public class FollowPlayer : MonoBehaviour {
-	Transform cam;
-	Transform camMain;
-	GameObject Char;
-
-	float roty;
-	float rotx;
-	float delta = 0f;
-
-
+	private GameObject _char;
 
 	// Use this for initialization
 	void Start () {
@@ -19,31 +11,16 @@ public class FollowPlayer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Char != null)
+        if (_char != null)
         {
-            cam.position = Char.transform.position;
-            camMain.LookAt(Char.transform);
-            moveCam();
+            transform.position = _char.transform.position;
+            transform.rotation = _char.transform.rotation;
         }
-	}
-
-	void moveCam()
-	{
-		roty += -Input.GetAxis("Mouse X")*2.5f;
-		rotx += Input.GetAxis("Mouse Y")*2.5f;
-		rotx = Mathf.Clamp(rotx,-50f,80f);
-
-		cam.localRotation = Quaternion.Euler(rotx,roty,0);
 	}
 
     public void SetTarget(GameObject target)
     {
-        camMain = transform.FindChild("Main Camera");
-        cam = this.transform;
-
-        Char = target;
-        cam.LookAt(Char.transform);
-        cam.position = Char.transform.position;
-        cam.localEulerAngles = new Vector3(0, 0, 0);
+        _char = target;
+        transform.position = _char.transform.position;
     }
 }

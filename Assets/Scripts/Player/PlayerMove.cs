@@ -11,6 +11,10 @@ public class PlayerMove : MonoBehaviour {
 	public float gravity = 0.001f;
 	public float startPosYAxis;
 
+    float _rotY;
+    float _rotX;
+    float delta = 0f;
+
 	// Use this for initialization
 	void Start () {
 		jumpHeight = speedJumpStart;
@@ -26,16 +30,27 @@ public class PlayerMove : MonoBehaviour {
 	{
         if (networkView.isMine)
         {
+            // rotate
+            _rotY += Input.GetAxis("Mouse X") * 2.5f;
+            _rotX -= Input.GetAxis("Mouse Y") * 2.5f;
+            _rotX = Mathf.Clamp(_rotX, -50f, 50f);
+
+            this.transform.eulerAngles = new Vector3(_rotX, _rotY, 0);
+
             //Walk forward
             if (Input.GetAxis("Vertical") != 0)
             {
+                var y = transform.position.y;
                 transform.Translate(Vector3.forward * Input.GetAxis("Vertical") * Time.deltaTime * speed, Space.Self);
+                transform.position = new Vector3(transform.position.x, y, transform.position.z);
             }
+
             //Rotate
             if (Input.GetAxis("Horizontal") != 0)
             {
-                transform.Rotate(Vector3.up * Input.GetAxis("Horizontal") * rotSpeed * Time.deltaTime, Space.Self);
+                transform.Translate(-Vector3.left * Input.GetAxis("Horizontal") * Time.deltaTime * speed, Space.Self);
             }
+
             //Jump
             if (Input.GetAxis("Jump") != 0 || continueJump == true)
             {
@@ -44,17 +59,18 @@ public class PlayerMove : MonoBehaviour {
             }
         }
 	}
+
 	//Jump function
 	void jump(float startPosY)
 	{
 		continueJump = true;
 		jumpHeight = jumpHeight-gravity;
 		transform.Translate(Vector3.up*jumpHeight);
+
 		if(transform.position.y <= startPosY && jumpHeight<=0)
 		{
 			continueJump = false;
 			jumpHeight = speedJumpStart;
-			//Debug.Log(isjumping);
 		}
 	}
 
