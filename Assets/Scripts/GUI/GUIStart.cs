@@ -24,8 +24,14 @@ public class GUIStart : MonoBehaviour {
 	public float coverX;
 	public float coverY;
 
+	//for the different menues
 	bool showButtons = true;
 	bool showCredits = false;
+	bool showOptions = false;
+
+	//for the resolution
+	public int toolbarInt = 0;
+	public string[] toolbarStrings = new string[]{"800x600", "1920x1080"};
 
 	// Use this for initialization
 	void Start () {
@@ -76,6 +82,8 @@ public class GUIStart : MonoBehaviour {
 			if (GUI.Button (new Rect (0, (pxDesiredY * 0.76f) / 5, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / 5), "Find Host")) {
 			}
 			if (GUI.Button (new Rect (0, (2 * pxDesiredY * 0.76f) / 5, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / 5), "Options")) {
+				showButtons = false;
+				showOptions = true;
 			}
 			if (GUI.Button (new Rect (0, (3 * pxDesiredY * 0.76f) / 5, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / 5), "Credits")) {
 				showButtons = false;
@@ -96,6 +104,30 @@ public class GUIStart : MonoBehaviour {
 				showButtons = true;
 			}
 
+		}
+
+		if (showOptions) {
+			GUI.Label (new Rect(20,20, pxDesiredX * 0.76f, 40), "Set your Screen Resolution:", style);
+
+			GUI.BeginGroup(new Rect (0,60,pxDesiredX * 0.76f, 100));
+			if (GUI.Button (new Rect(0,0, (pxDesiredX * 0.76f)/2, 50), "800x600")){
+				Screen.SetResolution (800,600,true);
+			}
+			if (GUI.Button (new Rect((pxDesiredX * 0.76f)/2,0, (pxDesiredX * 0.76f)/2, 50), "1920x1080")){
+				Screen.SetResolution (1920,1080,true);
+			}
+			/*if (GUI.Button (new Rect(0,60, 200, 40), "1920x1080", style)){
+				Screen.SetResolution (1920,1080,true);
+			}*/
+
+			GUI.EndGroup();
+
+
+
+			if (GUI.Button (new Rect (0, (4 * pxDesiredY * 0.76f) / 5, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / 5), "Back")) {
+				showOptions = false;
+				showButtons = true;
+			}
 		}
 
 		GUI.EndGroup ();
