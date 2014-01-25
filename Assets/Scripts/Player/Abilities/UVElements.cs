@@ -6,7 +6,7 @@ public class UVElements : MonoBehaviour {
 	GameObject character;
 	GameObject text;
 	public Component[] textMesh;
-	static public bool abilityButtonPressed = true;
+	static public bool abilityButtonPressed;
 	float startTime;
 	float durationAbility = 5f;
 	bool count;
@@ -18,7 +18,7 @@ public class UVElements : MonoBehaviour {
 	}
 	void update()
 	{
-		//abilityButtonPressed = GUIScene.toggleState;
+		abilityButtonPressed = GUIScene.toggleState;
 		//If Ability-Button is pressed
 		if(abilityButtonPressed == true)
 		{
