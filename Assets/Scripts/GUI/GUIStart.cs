@@ -12,13 +12,21 @@ public class GUIStart : MonoBehaviour {
 	//GUI Style
 	public GUIStyle style;
 
+	Texture2D txrBackground;
+	//the ratio
+	float aspectX;
+	float aspectY;
+	//sets a value how much screen should be covered (in percent, e.g.: 90% is 0.9)
+	float coverX;
+	float coverY;
+
 	// Use this for initialization
 	void Start () {
 		style.normal.textColor = Color.white;
 
 		style.fontSize = 20;
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 
@@ -26,6 +34,32 @@ public class GUIStart : MonoBehaviour {
 	}
 
 	void OnGUI() {
+		//average values
+		aspectX = Mathf.Max (1f, aspectX);
+		aspectY = Mathf.Max (1f, aspectY);
+		coverX = Mathf.Max (0.1f, coverX);
+		coverY = Mathf.Max (0.1f, coverY);
+
+		float pxDesiredX = coverX * Screen.width;
+		float pxDesiredY = coverY * Screen.height;
+
+		float aspectDesired = 1.0f * aspectX / aspectY;
+
+		if (pxDesiredX / pxDesiredY < aspectDesired) {
+			pxDesiredY = pxDesiredX / aspectDesired;
+		} else {
+			pxDesiredX = pxDesiredY * aspectDesired;
+		}
+
+		var pxBorderX = Screen.width - pxDesiredX;
+		var pxBorderY = Screen.height - pxDesiredY;
+
+		Rect rectResult = new Rect (pxBorderX / 2, pxBorderY / 2, pxDesiredX, pxDesiredY);
+
+		GUI.BeginGroup (rectResult);
+
+
+		/*
 		float width = Screen.width / 1.1f;
 		float height = Screen.height / 1.3f;
 
@@ -34,7 +68,6 @@ public class GUIStart : MonoBehaviour {
 
 		
 	
-		//GUI.DrawTexture (new Rect (30, 0, horizRatio, vertRatio), startScreen, ScaleMode.StretchToFill, true);
 
 		GUI.BeginGroup (new Rect (dWidth, dHeight, Screen.width, Screen.height));
 
@@ -47,5 +80,6 @@ public class GUIStart : MonoBehaviour {
 		}
 
 		GUI.EndGroup ();
+*/
 	}
 }
