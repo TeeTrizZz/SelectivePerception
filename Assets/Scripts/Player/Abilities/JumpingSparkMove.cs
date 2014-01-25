@@ -12,9 +12,9 @@ public class JumpingSparkMove : MonoBehaviour {
 	{
 		startPosY = this.transform.position.y;
 	}
-	void update()
+	void Update()
 	{
-		abilityButtonPressed = GUIScene.toggleState;
+		abilityButtonPressed = GUIScene.doAbility;
 		//If Ability-Button is pressed
 		if(abilityButtonPressed == true)
 		{
