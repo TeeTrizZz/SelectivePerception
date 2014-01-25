@@ -27,6 +27,7 @@ public class FollowPlayer : MonoBehaviour {
 		camMain.LookAt(Char.transform);
 		moveCam();
 	}
+
 	void moveCam()
 	{
 		roty += -Input.GetAxis("Mouse X")*2.5f;

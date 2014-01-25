@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Textures/skillNightwisp.png.meta
 guid: 8580aa0bae979fe4d9578e86fae2e74b
+=======
+guid: 0cc7100bdbe134a20917834289744a4b
+>>>>>>> cf6087367f448653ba81c82005a91bb8e1d18d39:Assets/Textures/skillNightwisp.png.meta
 TextureImporter:
   serializedVersion: 2
   mipmaps:

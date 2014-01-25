@@ -127,9 +127,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9970ead274416401e854fc2292ae7b77, type: 3}
+  m_Script: {fileID: 11500000, guid: 5dd43d95cae89476eb93ce12b67006fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prefabSpotlight: {fileID: 400000, guid: 21463ede0a09046cc942c86e65928a07, type: 2}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

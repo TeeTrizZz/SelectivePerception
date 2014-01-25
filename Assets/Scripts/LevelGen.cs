@@ -11,8 +11,8 @@ public class LevelGen : MonoBehaviour {
 	void Start () {
 		Char = GameObject.FindWithTag("Player");
 
-        var filename1 = "Assets/Level/Level.txt";
-        var filename2 = "Assets/Level/Light.txt";
+        var filename1 = "External/Level/Level.txt";
+        var filename2 = "External/Level/Light.txt";
 
         var prefix = "";
 

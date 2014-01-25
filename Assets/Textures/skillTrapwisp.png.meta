@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Textures/skillTrapwisp.png.meta
 guid: 94233c4524bae284fb7eabed87bbc8d8
+=======
+guid: bc62da04766c94a42b017a9456e35e96
+>>>>>>> cf6087367f448653ba81c82005a91bb8e1d18d39:Assets/Textures/skillTrapwisp.png.meta
 TextureImporter:
   serializedVersion: 2
   mipmaps:

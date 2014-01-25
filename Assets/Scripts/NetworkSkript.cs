@@ -8,16 +8,18 @@ public class NetworkSkript : MonoBehaviour {
 
     private HostData[] hostList;
 
-    public GameObject playerPrefab;
+    public GameObject TrapSpark;
+    public GameObject Cam;
 
 	// Use this for initialization
 	void Start () {
-	
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+        if (Input.GetKeyDown(KeyCode.Escape))
+            Application.Quit();
 	}
 
     void OnGUI()
@@ -77,6 +79,15 @@ public class NetworkSkript : MonoBehaviour {
 
     private void SpawnPlayer()
     {
-        Network.Instantiate(playerPrefab, new Vector3(0f, 5f, 0f), Quaternion.identity, 0);
+        Debug.Log(gameObject);
+
+        Network.Instantiate(TrapSpark, new Vector3(0, 0, 0), Quaternion.identity, 0);
+        Instantiate(Cam, new Vector3(0, 0, 0), Quaternion.identity);
+    }
+
+    public void OnDestroy()
+    {
+        Network.Disconnect();
+        MasterServer.UnregisterHost();
     }
 }
