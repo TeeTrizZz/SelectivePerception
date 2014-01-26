@@ -11,7 +11,7 @@ public class InitScene : MonoBehaviour {
     public GameObject Cam;
 
     // Use this for initialization
-    void Start()
+    public void InitGame()
     {
         var player = NightSpark; 
 
@@ -39,6 +39,9 @@ public class InitScene : MonoBehaviour {
         }
 
         GameData.levelID = "0";
+
+        Network.isMessageQueueRunning = true;
+        Network.SetSendingEnabled(0, true);
 
         var go = (GameObject)Network.Instantiate(player, new Vector3(0, 0, 0), Quaternion.identity, 0);
         var cam = (GameObject)Instantiate(Cam, new Vector3(0, 0, 0), Quaternion.identity);
