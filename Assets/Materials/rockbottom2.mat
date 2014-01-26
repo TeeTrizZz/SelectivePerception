@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: rockbottom
+  m_Name: rockbottom2
   m_Shader: {fileID: 2, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
@@ -18,14 +18,14 @@ Material:
           name: _MainTex
         second:
           m_Texture: {fileID: 2800000, guid: 54d89d7b5394448349b19e487cc142e3, type: 3}
-          m_Scale: {x: 1, y: 1}
+          m_Scale: {x: 50, y: 50}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _BumpMap
         second:
           m_Texture: {fileID: 2800000, guid: 9420a8ed3491f1d4a939c80aac1dae41, type: 3}
-          m_Scale: {x: 1, y: 1}
+          m_Scale: {x: 50, y: 50}
           m_Offset: {x: 0, y: 0}
     m_Floats: {}
     m_Colors:
