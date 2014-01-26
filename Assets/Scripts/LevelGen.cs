@@ -10,6 +10,8 @@ public class LevelGen : MonoBehaviour {
     public GameObject _light;
     public GameObject _trap;
     public GameObject _wire;
+    public GameObject _start;
+    public GameObject _goal;
 	public GameObject Char;
 
     private float startX = 0f;
@@ -121,11 +123,15 @@ public class LevelGen : MonoBehaviour {
                         break;
 
                     case '2':
-                        tmpObj = _ground;
+                        tmpObj = _start;
 
                         startX = posX;
                         startZ = posZ;
 
+                        break;
+
+                    case '3':
+                        tmpObj = _goal;
                         break;
 
                     case '4':

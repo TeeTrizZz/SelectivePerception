@@ -13,7 +13,7 @@ public class PlayerMove : MonoBehaviour {
     float _rotY;
     float _rotX;
     float delta = 0f;
-
+    
     public bool BlockMe;
     public GameObject SetMeSomeWhere;
 
@@ -44,8 +44,9 @@ public class PlayerMove : MonoBehaviour {
                 //Walk forward
                 if (Input.GetAxis("Vertical") != 0)
                 {
+                    var y = transform.position.y;
                     transform.Translate(transform.forward * Input.GetAxis("Vertical") * Time.deltaTime * speed, Space.World);
-                    transform.position = new Vector3(transform.position.x, 0.4f, transform.position.z);
+                    transform.position = new Vector3(transform.position.x, y, transform.position.z);
                 }
 
                 //Rotate
@@ -59,6 +60,9 @@ public class PlayerMove : MonoBehaviour {
                     jump(startPosYAxis);
                 }
             }
+
+            if (transform.position.y < 0.4f)
+                transform.position = new Vector3(transform.position.x, 0.4f, transform.position.z);
         }
 	}
 
@@ -88,7 +92,6 @@ public class PlayerMove : MonoBehaviour {
     public void SetYouBack()
     {
         SetMeSomeWhere = null;
-        transform.position = new Vector3(transform.position.x, 0.4f, transform.position.z);
     }
 
     public void YouAreFree()
