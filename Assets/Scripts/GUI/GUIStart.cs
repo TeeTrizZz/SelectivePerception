@@ -200,7 +200,7 @@ public class GUIStart : MonoBehaviour
                 break;
 
             case 4: //show credits
-                GUI.Label(new Rect(20, 20, pxDesiredX * 0.76f, 3 * (pxDesiredY * 0.76f) / 5), "Developed for Global Game Jam 2014 \n\nat Games Lab Hochschule Furtwangen University\n\nTopic:\n\nWe don't see things as they are. We see them as we are.\n\nTeam:\n\nSascha Englert, Fabian Gaertner, Sarah Haefele, Matthias Kaufmann, \nStefanie Mueller, Benjamin Ruoff", style);
+                GUI.Label(new Rect(20, 20, pxDesiredX * 0.76f, 3 * (pxDesiredY * 0.76f) / 5), "Developed for Global Game Jam 2014 \n\nat Games Lab Hochschule Furtwangen University\n\nTopic:\n\nWe don't see things as they are. We see them as we are.\n\nTeam:\nSascha Englert, Fabian Gaertner, Sarah Haefele, Matthias Kaufmann, \nStefanie Mueller, Benjamin Ruoff\nSpecial Thanks to Anke Meiering and Jan Ewald!", style);
                 GUI.DrawTexture(new Rect(20, 300, 100, 100), ggjLogo, ScaleMode.StretchToFill);
                 GUI.DrawTexture(new Rect(150, 300, 247, 100), hfuLogo, ScaleMode.StretchToFill);
                 if (GUI.Button(new Rect(0, (4 * pxDesiredY * 0.76f) / 5, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / 5), "Back"))
