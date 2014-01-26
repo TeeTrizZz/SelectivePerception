@@ -9,7 +9,15 @@ public class NetworkSkript : MonoBehaviour {
     public HostData[] hostList;
 
     public GameObject TrapSpark;
+	public GameObject JumpingSpark;
+	public GameObject NightSpark;
+	public GameObject UVSpark;
+	public GameObject WallhackSpark;
+	private GameObject player;
+
     public GameObject Cam;
+
+
 
 	// Use this for initialization
 	void Start () {
@@ -81,7 +89,7 @@ public class NetworkSkript : MonoBehaviour {
     {
         Debug.Log(gameObject);
 
-        var go = (GameObject) Network.Instantiate(TrapSpark, new Vector3(0, 0, 0), Quaternion.identity, 0);
+        var go = (GameObject) Network.Instantiate(player, new Vector3(0, 0, 0), Quaternion.identity, 0);
         var cam = (GameObject) Instantiate(Cam, new Vector3(0, 0, 0), Quaternion.identity);
 
         cam.GetComponent<LevelGen>().SetChar(go);
@@ -94,4 +102,32 @@ public class NetworkSkript : MonoBehaviour {
         Network.Disconnect();
         MasterServer.UnregisterHost();
     }
+
+	public void setPlayer(string temp) {
+		switch (temp) {
+				case "nightspark":
+						player = NightSpark;
+						break;
+				case "trapspark":
+						player = TrapSpark;
+						break;
+
+				case "jumpingspark":
+						player = JumpingSpark;
+						break;
+				case "nightspark":
+						player = NightSpark;
+						break;
+				case "uvspark":
+						player = UVSpark;
+						break;
+				case "wallhackspark":
+						player = WallhackSpark;
+						break;
+	
+				}
+	}
+
+	public void setLevel(string temp) {
+	}
 }
