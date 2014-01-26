@@ -2,7 +2,16 @@ fileFormatVersion: 2
 guid: fdae03db19bee3b45bdf2f2f9e4f3251
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - startScreen: {fileID: 2800000, guid: 681881b7297b6914fb9cc0776b0dea7f, type: 3}
+  - txrBackground: {fileID: 2800000, guid: 681881b7297b6914fb9cc0776b0dea7f, type: 3}
+  - ggjLogo: {fileID: 2800000, guid: 43b0894a9ed9ea9409ef95f3a6c98e40, type: 3}
+  - hfuLogo: {fileID: 2800000, guid: 4c82f1b70cf01cf41acf95b56af44c5a, type: 3}
+  - nightSpark: {fileID: 2800000, guid: 94233c4524bae284fb7eabed87bbc8d8, type: 3}
+  - trapSpark: {fileID: 2800000, guid: 94233c4524bae284fb7eabed87bbc8d8, type: 3}
+  - jumpSpark: {fileID: 2800000, guid: c61e55a11a688eb45b791137534bfa1d, type: 3}
+  - uvSpark: {fileID: 2800000, guid: 60b87bbfba21a8549b05229012a4850d, type: 3}
+  - wallSpark: {fileID: 2800000, guid: 37e4ec21988cd72418b77eed4dc3356f, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

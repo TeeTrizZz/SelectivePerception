@@ -2,7 +2,13 @@ fileFormatVersion: 2
 guid: f4f07df4fff7d1b4e9b7b3229578546f
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - skill: {instanceID: 0}
+  - nightSkill: {fileID: 2800000, guid: 8580aa0bae979fe4d9578e86fae2e74b, type: 3}
+  - trapSkill: {fileID: 2800000, guid: 94233c4524bae284fb7eabed87bbc8d8, type: 3}
+  - jumpSkill: {fileID: 2800000, guid: c61e55a11a688eb45b791137534bfa1d, type: 3}
+  - uvSkill: {fileID: 2800000, guid: 60b87bbfba21a8549b05229012a4850d, type: 3}
+  - wallSkill: {fileID: 2800000, guid: 37e4ec21988cd72418b77eed4dc3356f, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -14,6 +14,13 @@ public class GUIScene : MonoBehaviour
 
     public Texture skill;
 
+	public Texture nightSkill;
+	public Texture trapSkill;
+	public Texture jumpSkill;
+	public Texture uvSkill;
+	public Texture wallSkill;
+
+
     private int coolDown = 30;
 
     public GUIStyle style;
@@ -21,7 +28,24 @@ public class GUIScene : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+		string characterType = GameData.playerChar;
+		switch (characterType) {
+			case ("nightspark"):
+				skill = nightSkill;
+				break;
+			case ("trapspark"):
+				skill = trapSkill;
+				break;
+			case ("jumpingspark"):
+				skill = jumpSkill;
+				break;
+			case ("uvspark"):
+				skill = uvSkill;
+				break;
+			case ("wallhackspark"):
+				skill = wallSkill;
+				break;
+				}
         style.normal.textColor = Color.white;
         style.fontSize = 40;
         style.alignment = TextAnchor.MiddleCenter; //aligns the text to middle

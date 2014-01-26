@@ -18,6 +18,11 @@ public class GUIStart : MonoBehaviour
 
     public Texture2D ggjLogo;
     public Texture2D hfuLogo;
+	public Texture nightSparkTex;
+	public Texture trapSparkTex;
+	public Texture jumpSparkTex;
+	public Texture uvSparkTex;
+	public Texture wallSparkTex;
 
     //the ratio
     public float aspectX;
@@ -192,7 +197,19 @@ public class GUIStart : MonoBehaviour
                 break;
 
             case 5: //show character selection
-                if (GUI.Button(new Rect(0, 0, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / 6), "Nightspark"))
+				GUI.DrawTexture(new Rect(0, 0, (pxDesiredY * 0.76f) / 6, (pxDesiredY * 0.76f) / 6 ), nightSparkTex);
+				GUI.DrawTexture(new Rect(0, (pxDesiredY * 0.76f) / 6, (pxDesiredY * 0.76f) / 6, (pxDesiredY * 0.76f) / 6), trapSparkTex);
+				GUI.DrawTexture(new Rect(0, ((6 - 4) * pxDesiredY * 0.76f) / 6, (pxDesiredY * 0.76f) / 6, (pxDesiredY * 0.76f) / 6), wallSparkTex);
+				GUI.DrawTexture(new Rect(0, ((6 - 3) * pxDesiredY * 0.76f) / 6, (pxDesiredY * 0.76f) / 6, (pxDesiredY * 0.76f) / 6), jumpSparkTex);
+				GUI.DrawTexture(new Rect(0, ((6 - 2) * pxDesiredY * 0.76f) / 6, (pxDesiredY * 0.76f) / 6, (pxDesiredY * 0.76f) / 6), uvSparkTex);
+
+				GUI.DrawTexture(new Rect(pxDesiredX * 0.76f, 0, -(pxDesiredY * 0.76f) / 6, (pxDesiredY * 0.76f) / 6 ), nightSparkTex);
+				GUI.DrawTexture(new Rect(pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / 6, -(pxDesiredY * 0.76f) / 6, (pxDesiredY * 0.76f) / 6), trapSparkTex);
+				GUI.DrawTexture(new Rect(pxDesiredX * 0.76f, ((6 - 4) * pxDesiredY * 0.76f) / 6, -(pxDesiredY * 0.76f) / 6, (pxDesiredY * 0.76f) / 6), wallSparkTex);
+				GUI.DrawTexture(new Rect(pxDesiredX * 0.76f, ((6 - 3) * pxDesiredY * 0.76f) / 6, -(pxDesiredY * 0.76f) / 6, (pxDesiredY * 0.76f) / 6), jumpSparkTex);
+				GUI.DrawTexture(new Rect(pxDesiredX * 0.76f, ((6 - 2) * pxDesiredY * 0.76f) / 6, -(pxDesiredY * 0.76f) / 6, (pxDesiredY * 0.76f) / 6), uvSparkTex);
+
+				 if (GUI.Button(new Rect(0, 0, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / 6), "Nightspark"))
                 {
                     netSkript.setPlayer("nightspark");
                     menuType = 6;
