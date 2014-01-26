@@ -99,7 +99,6 @@ public class GUIStart : MonoBehaviour {
 			}
 			if (GUI.Button (new Rect (0, ((buttonAmount-2) * pxDesiredY * 0.76f) / buttonAmount, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / buttonAmount), "Credits")) {
 				menueType = 4; //show credits
-				
 			}
 			if (GUI.Button (new Rect (0, ((buttonAmount-1) * pxDesiredY * 0.76f) / buttonAmount, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / buttonAmount), "Exit")) {
 				Application.Quit ();
