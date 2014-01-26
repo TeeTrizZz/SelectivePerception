@@ -18,6 +18,11 @@ public class GUIStart : MonoBehaviour
 
     public Texture2D ggjLogo;
     public Texture2D hfuLogo;
+	public Texture nightSpark;
+	public Texture trapSpark;
+	public Texture jumpSpark;
+	public Texture uvSpark;
+	public Texture wallSpark;
 
     //the ratio
     public float aspectX;
