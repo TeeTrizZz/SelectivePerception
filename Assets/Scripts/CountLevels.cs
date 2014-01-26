@@ -14,7 +14,9 @@ public class CountLevels : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		countLevels ();
+		if (!Application.isWebPlayer) {
+			countLevels ();
+		}
 	}
 	
 	// Update is called once per frame
@@ -23,8 +25,10 @@ public class CountLevels : MonoBehaviour {
 	}
 	void countLevels()
 	{
+
 		//Get all directories which are located in the External folder
-		DirectoryInfo dirMain = new DirectoryInfo("/../" +"External/");
+		DirectoryInfo dirMain = new DirectoryInfo(@"\..\External\");
+		Debug.Log (dirMain);
 		DirectoryInfo[] allSubFolders = dirMain.GetDirectories();
 		foreach (DirectoryInfo subFolder in allSubFolders) 
 		{
@@ -38,6 +42,6 @@ public class CountLevels : MonoBehaviour {
 			}
 			*/
 		}
-		//fileNames.ForEach (print);
+		fileNames.ForEach (print);
 	}
 }
