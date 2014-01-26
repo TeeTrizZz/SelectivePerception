@@ -25,6 +25,7 @@ public class GUIScene : MonoBehaviour
 
     public GUIStyle style;
 	public GUIStyle hostStyle;
+	public GUIStyle skillStyle;
 
 	private int min = 0;
 	private int sec = 0;
@@ -54,6 +55,8 @@ public class GUIScene : MonoBehaviour
 				}
 		hostStyle.normal.textColor = Color.white;
 		hostStyle.fontSize = 20;
+		skillStyle.normal.textColor = Color.black;
+		skillStyle.fontSize = 17;
 		style.normal.textColor = Color.white;
         style.fontSize = 30;
         style.alignment = TextAnchor.MiddleCenter; //aligns the text to middle
@@ -79,7 +82,7 @@ public class GUIScene : MonoBehaviour
 		GUI.Label (new Rect (Screen.width / 2, 5, 100, 60), min.ToString () + " min " + sec.ToString() + " sec", style);
 
 		//show which room
-		GUI.Label (new Rect (5, Screen.height - 30, 50, 29), "Hostname: " + GameData.levelID, hostStyle);
+		GUI.Label (new Rect (5, Screen.height - 30, 50, 29), "Hostname: " + GameData.serverID, hostStyle);
         
 		if (GUI.Button(new Rect(5, 5, 105, 105), skill) || Input.GetKey("f"))
         {
@@ -90,7 +93,7 @@ public class GUIScene : MonoBehaviour
                 startTime = Time.time; //save start time after clicking the button
             }
         }
-		GUI.Label (new Rect (100, 5, 40, 40), "f", hostStyle);
+		GUI.Label (new Rect (86, 80, 40, 40), "F", skillStyle);
 
         //show cooldown time
         if (toggleState)
