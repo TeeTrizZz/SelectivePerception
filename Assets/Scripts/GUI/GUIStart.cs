@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.IO;
 
 public class GUIStart : MonoBehaviour {
 
@@ -26,6 +27,13 @@ public class GUIStart : MonoBehaviour {
 
 	//button amount
 	int buttonAmount = 5;
+	//level amount
+	int levelAmount = 2;
+	//level folder amount
+	int countFolders = 0;
+
+	//selected folder for the loaded level
+	public string finalLevelFolder;
 
 	//for the different menues
 	int menueType = 0;
@@ -107,8 +115,12 @@ public class GUIStart : MonoBehaviour {
 			break;
 		
 		case 1: //show level selection
-			//wait for second player!
-			if (GUI.Button (new Rect (0, (4 * pxDesiredY * 0.76f) / 5, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / 5), "Back")) {
+			for (int i = 0; i < levelAmount; i++) {
+				if (GUI.Button (new Rect (0, ((pxDesiredY * 0.76f) / (levelAmount+1))*i, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / (levelAmount+1)), "Level " + (i+1))) {
+					finalLevelFolder = i.ToString();
+				}
+			}
+			if (GUI.Button (new Rect (0, ((levelAmount+1) * pxDesiredY * 0.76f) / 5, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / 5), "Back")) {
 				netSkript.OnDestroy();
 				menueType = 0;
 			}
@@ -122,6 +134,9 @@ public class GUIStart : MonoBehaviour {
 					if (GUI.Button(new Rect(400, 100 + (110 * i), 300, 100), netSkript.hostList[i].gameName))
 						netSkript.JoinServer(netSkript.hostList[i]);
 				}
+			}
+			if (GUI.Button (new Rect (0, (4 * pxDesiredY * 0.76f) / 5, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / 5), "Back")) {
+				menueType = 0;
 			}
 			break;
 			
@@ -167,4 +182,5 @@ public class GUIStart : MonoBehaviour {
 
 
 	}
-}
+	
+} //end class
