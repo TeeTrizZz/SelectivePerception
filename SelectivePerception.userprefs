@@ -1,9 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\CountLevels.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\NetworkSkript.cs">
     <Files>
-      <File FileName="Assets\Scripts\CountLevels.cs" Line="27" Column="15" />
-      <File FileName="Assets\Scripts\LevelGen.cs" Line="81" Column="59" />
+      <File FileName="Assets\Scripts\GUI\GUIStart.cs" Line="41" Column="22" />
+      <File FileName="Assets\Scripts\NetworkSkript.cs" Line="132" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

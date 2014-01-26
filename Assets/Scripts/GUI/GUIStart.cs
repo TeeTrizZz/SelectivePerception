@@ -31,9 +31,7 @@ public class GUIStart : MonoBehaviour {
 	int levelAmount = 2;
 	//level folder amount
 	int countFolders = 0;
-
-	//selected folder for the loaded level
-	public string finalLevelFolder;
+	
 
 	//for the different menues
 	int menueType = 0;
@@ -117,7 +115,7 @@ public class GUIStart : MonoBehaviour {
 		case 1: //show level selection
 			for (int i = 0; i < levelAmount; i++) {
 				if (GUI.Button (new Rect (0, ((pxDesiredY * 0.76f) / (levelAmount+1))*i, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / (levelAmount+1)), "Level " + (i+1))) {
-					finalLevelFolder = i.ToString();
+					netSkript.setLevel(i.ToString());
 					menueType = 5; //show character selection
 				}
 			}
