@@ -3,7 +3,7 @@ using System.Collections;
 
 public class JumpingSparkMove : MonoBehaviour {
 	private float jumpSparkGravity = 0.001f;
-	private bool continueJumpSpark = false;
+	static public bool continueJumpSpark = false;
 	static float jumpSparkSpeed = 0.07f;
 	private float jumpSparkHeight = jumpSparkSpeed;
 	private bool abilityButtonPressed;

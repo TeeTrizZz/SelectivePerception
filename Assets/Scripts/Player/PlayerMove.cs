@@ -42,6 +42,8 @@ public class PlayerMove : MonoBehaviour {
             if (!BlockMe)
             {
                 //Walk forward
+				if(JumpingSparkMove.continueJumpSpark == false)
+				{
                 if (Input.GetAxis("Vertical") != 0)
                 {
                     var y = transform.position.y;
@@ -59,6 +61,7 @@ public class PlayerMove : MonoBehaviour {
                     continueJump = true;
                     jump(startPosYAxis);
                 }
+				}
             }
 
             if (transform.position.y < 0.4f)
