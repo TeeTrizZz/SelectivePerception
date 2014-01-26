@@ -33,10 +33,6 @@ public class GUIStart : MonoBehaviour
     //level folder amount
     int countFolders = 0;
 
-
-    //for the different menues
-    int menueType = 0;
-
     //for the resolution
     public int toolbarInt = 0;
     public string[] toolbarStrings = new string[] { "800x600", "1920x1080" };
@@ -62,7 +58,9 @@ public class GUIStart : MonoBehaviour
 
     void OnGUI()
     {
-        if (menueType == 6)
+        var menuType = GameData.menuType;
+
+        if (menuType == 6)
             return;
 
         //average values
@@ -95,7 +93,7 @@ public class GUIStart : MonoBehaviour
         GUI.DrawTexture(new Rect(0, 0, rectResult.width, rectResult.height), txrBackground, ScaleMode.StretchToFill);
         GUI.BeginGroup(new Rect((pxDesiredX / 2) - ((pxDesiredX * 0.76f) / 2), (pxDesiredY / 2) - ((pxDesiredY * 0.76f) / 2), pxDesiredX * 0.76f, pxDesiredY * 0.76f)); //begin group inner menue
 
-        switch (menueType)
+        switch (menuType)
         {
             case 0: //show main menue
                 if (GUI.Button(new Rect(0, 0, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / buttonAmount), "Start Server"))
@@ -103,7 +101,7 @@ public class GUIStart : MonoBehaviour
                     if (!Network.isClient && !Network.isServer)
                     {
                         netSkript.StartServer(); //starts server
-                        menueType = 1; //show level selection
+                        menuType = 1; //show level selection
                     }
 
                 }
@@ -112,16 +110,16 @@ public class GUIStart : MonoBehaviour
                     if (!Network.isClient && !Network.isServer)
                     {
                         netSkript.RefreshHostList();
-                        menueType = 2; //show host selection
+                        menuType = 2; //show host selection
                     }
                 }
                 if (GUI.Button(new Rect(0, ((buttonAmount - 3) * pxDesiredY * 0.76f) / buttonAmount, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / buttonAmount), "Options"))
                 {
-                    menueType = 3; // show Options
+                    menuType = 3; // show Options
                 }
                 if (GUI.Button(new Rect(0, ((buttonAmount - 2) * pxDesiredY * 0.76f) / buttonAmount, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / buttonAmount), "Credits"))
                 {
-                    menueType = 4; //show credits
+                    menuType = 4; //show credits
                 }
                 if (GUI.Button(new Rect(0, ((buttonAmount - 1) * pxDesiredY * 0.76f) / buttonAmount, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / buttonAmount), "Exit"))
                 {
@@ -136,13 +134,13 @@ public class GUIStart : MonoBehaviour
                     if (GUI.Button(new Rect(0, ((pxDesiredY * 0.76f) / (levelAmount + 1)) * i, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / (levelAmount + 1)), "Level " + (i + 1)))
                     {
                         netSkript.setLevel(i.ToString());
-                        menueType = 5; //show character selection
+                        menuType = 5; //show character selection
                     }
                 }
                 if (GUI.Button(new Rect(0, ((levelAmount) * pxDesiredY * 0.76f) / (levelAmount + 1), pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / 5), "Back"))
                 {
                     netSkript.OnDestroy();
-                    menueType = 0;
+                    menuType = 0;
                 }
                 break;
 
@@ -152,12 +150,14 @@ public class GUIStart : MonoBehaviour
                     for (int i = 0; i < netSkript.hostList.Length; i++)
                     {
                         if (GUI.Button(new Rect(400, 100 + (110 * i), 300, 100), netSkript.hostList[i].gameName))
+                        {
                             netSkript.JoinServer(netSkript.hostList[i]);
+                        }
                     }
                 }
                 if (GUI.Button(new Rect(0, (4 * pxDesiredY * 0.76f) / 5, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / 5), "Back"))
                 {
-                    menueType = 0;
+                    menuType = 0;
                 }
                 break;
 
@@ -177,7 +177,7 @@ public class GUIStart : MonoBehaviour
 
                 if (GUI.Button(new Rect(0, (4 * pxDesiredY * 0.76f) / 5, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / 5), "Back"))
                 {
-                    menueType = 0;
+                    menuType = 0;
                 }
                 break;
 
@@ -187,7 +187,7 @@ public class GUIStart : MonoBehaviour
                 GUI.DrawTexture(new Rect(150, 240, 247, 100), hfuLogo, ScaleMode.StretchToFill);
                 if (GUI.Button(new Rect(0, (4 * pxDesiredY * 0.76f) / 5, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / 5), "Back"))
                 {
-                    menueType = 0;
+                    menuType = 0;
                 }
                 break;
 
@@ -195,31 +195,31 @@ public class GUIStart : MonoBehaviour
                 if (GUI.Button(new Rect(0, 0, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / 6), "Nightspark"))
                 {
                     netSkript.setPlayer("nightspark");
-                    menueType = 6;
+                    menuType = 6;
                 }
                 if (GUI.Button(new Rect(0, (pxDesiredY * 0.76f) / 6, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / 6), "Trapspark"))
                 {
                     netSkript.setPlayer("trapspark");
-                    menueType = 6;
+                    menuType = 6;
                 }
                 if (GUI.Button(new Rect(0, ((6 - 4) * pxDesiredY * 0.76f) / 6, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / 6), "Wallhackspark"))
                 {
                     netSkript.setPlayer("wallhackspark");
-                    menueType = 6;
+                    menuType = 6;
                 }
                 if (GUI.Button(new Rect(0, ((6 - 3) * pxDesiredY * 0.76f) / 6, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / 6), "Jumpingspark"))
                 {
                     netSkript.setPlayer("jumpingspark");
-                    menueType = 6;
+                    menuType = 6;
                 }
                 if (GUI.Button(new Rect(0, ((6 - 2) * pxDesiredY * 0.76f) / 6, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / 6), "UVSpark"))
                 {
                     netSkript.setPlayer("uvspark");
-                    menueType = 6;
+                    menuType = 6;
                 }
                 if (GUI.Button(new Rect(0, ((6 - 1) * pxDesiredY * 0.76f) / 6, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / 6), "Back"))
                 {
-                    menueType = 0;
+                    menuType = 0;
                 }
                 break;
 
@@ -234,7 +234,7 @@ public class GUIStart : MonoBehaviour
 
         GUI.EndGroup(); //end group whole menue
 
-
+        GameData.menuType = menuType;
     }
 
 } //end class
