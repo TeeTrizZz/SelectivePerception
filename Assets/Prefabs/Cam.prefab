@@ -105,6 +105,8 @@ MonoBehaviour:
   _wire: {fileID: 100010, guid: c49d55edf88a90846b6162d3a2eede44, type: 2}
   _start: {fileID: 100004, guid: 176b5b0fb15773e4b8fa2164858f155a, type: 2}
   _goal: {fileID: 100004, guid: 0f96ad5712deb4949b584e70eef2110f, type: 2}
+  _text: {fileID: 100000, guid: 63ceaf4acc88214479733bfc7cff3c57, type: 2}
+  _particle: {fileID: 100000, guid: d70e438139033464cae0540070930bee, type: 2}
   Char: {fileID: 100000, guid: 5f2e920f64d324582991019c138bd8e3, type: 2}
 --- !u!114 &11400004
 MonoBehaviour:

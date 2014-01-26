@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class UVElements : MonoBehaviour {
 
 	private GameObject character;
-	private GameObject[] text;
-	private MeshRenderer textMesh;
+    private List<MeshRenderer> text;
+
 	private bool abilityButtonPressed;
 	private float startTime;
 	private float durationAbility = 4f;
@@ -14,6 +15,7 @@ public class UVElements : MonoBehaviour {
 	void Start () {
 		character = this.transform.gameObject;
 	}
+
 	void Update()
 	{
 		abilityButtonPressed = GUIScene.doAbility;
@@ -27,28 +29,30 @@ public class UVElements : MonoBehaviour {
 			counter();
 		}
 	}
-	public void setText(GameObject[] temp){
+
+    public void SetText(List<MeshRenderer> temp)
+    {
 		text = temp;
 	}
+
 	void UVView()
 	{
 		//All of the "UV"-3D-Texts shall be visible to the UV-Spark
-		foreach (GameObject gO in text) {
-			textMesh = gO.GetComponent<MeshRenderer>();
-			textMesh.enabled = true;
-		}
+		foreach (var gO in text)
+			gO.enabled = true;
+
 		startTime = Time.time;
 		count = true;
 	}
 	void disableUVView()
 	{
 		//All of the "UV"-3D-Texts shall be visible to the UV-Spark
-		foreach (GameObject gO in text) {
-			textMesh = gO.GetComponent<MeshRenderer>();
-			textMesh.enabled = false;
-		}
+        foreach (var gO in text)
+            gO.enabled = false;
+
 		count = false;
 	}
+
 	void counter()
 	{
 		int dif = Mathf.RoundToInt(durationAbility - (Time.time - startTime));
