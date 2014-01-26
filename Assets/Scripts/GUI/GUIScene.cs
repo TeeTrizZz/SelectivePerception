@@ -24,6 +24,7 @@ public class GUIScene : MonoBehaviour
     private int coolDown = 30;
 
     public GUIStyle style;
+	public GUIStyle hostStyle;
 
 	private int min = 0;
 	private int sec = 0;
@@ -51,8 +52,10 @@ public class GUIScene : MonoBehaviour
 				skill = wallSkill;
 				break;
 				}
-        style.normal.textColor = Color.white;
-        style.fontSize = 40;
+		hostStyle.normal.textColor = Color.white;
+		hostStyle.fontSize = 20;
+		style.normal.textColor = Color.white;
+        style.fontSize = 30;
         style.alignment = TextAnchor.MiddleCenter; //aligns the text to middle
     }
 
@@ -72,10 +75,13 @@ public class GUIScene : MonoBehaviour
     void OnGUI()
     {
 
-
+		//show time
 		GUI.Label (new Rect (Screen.width / 2, 5, 100, 60), min.ToString () + " min " + sec.ToString() + " sec", style);
 
-        if (GUI.Button(new Rect(5, 5, 105, 105), skill) || Input.GetKey("f"))
+		//show which room
+		GUI.Label (new Rect (5, Screen.height - 30, 50, 29), "Hostname: " + GameData.levelID, hostStyle);
+        
+		if (GUI.Button(new Rect(5, 5, 105, 105), skill) || Input.GetKey("f"))
         {
             if (!toggleState)
             {
