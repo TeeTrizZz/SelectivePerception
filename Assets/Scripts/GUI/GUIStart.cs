@@ -240,6 +240,12 @@ public class GUIStart : MonoBehaviour
                 }
                 break;
 
+		case 6: //end screen
+			int tempSec = GameData.time % 60;
+
+			string endMessage = "Congratulations, you've reached the end!\n\nTime elapsed: " + (GameData.time/60).ToString() + " min" + tempSec + "sec";
+			GUI.Label (new Rect(0, 0, 400, (pxDesiredY * 0.76f) / 6), endMessage, style);
+			break;
 
         } //end switch
 
