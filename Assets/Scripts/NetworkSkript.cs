@@ -45,13 +45,13 @@ public class NetworkSkript : MonoBehaviour {
 
 	void OnServerInitialized()
     {
-        Debug.Log("Server Initializied");
+        //Debug.Log("Server Initializied");
         //SpawnPlayer();
     }
 
 	void OnPlayerConnected (NetworkPlayer player) {
 		playerCount++;
-        SendInfoToClient();
+        networkView.RPC("ReceiveInfoFromServer", player, GameData.levelID);
     }
 
     public void RefreshHostList()
@@ -72,6 +72,7 @@ public class NetworkSkript : MonoBehaviour {
 
     public void JoinServer(HostData hostData)
     {
+        GameData.serverID = hostData.gameName;
         Network.Connect(hostData);
     }
 	
@@ -94,13 +95,6 @@ public class NetworkSkript : MonoBehaviour {
     [RPC]
     void ReceiveInfoFromServer(string someInfo)
     {
-        Debug.Log("Ich setze: " + someInfo);
         GameData.levelID = someInfo;
-    }
-
-    [RPC]
-    void SendInfoToClient()
-    {
-        networkView.RPC("ReceiveInfoFromServer", RPCMode.Others, GameData.levelID);
     }
 }

@@ -29,6 +29,7 @@ public class GUIScene : MonoBehaviour
 
 	private int min = 0;
 	private int sec = 0;
+    private int oldSec = -1;
 	private int overallStartTime;
 
     // Use this for initialization
@@ -65,14 +66,39 @@ public class GUIScene : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Network.isServer)
+        {
+            GameData.time = (int)Mathf.Round((Time.time - overallStartTime));
+            sec = (GameData.time) - (min * 60);
 
-		GameData.time = (int) Mathf.Round((Time.time - overallStartTime));
-		sec = (GameData.time) - (min * 60);
+            if (sec == 60)
+            {
+                min++;
+                sec = 0;
+            }
 
-		if (sec == 60) {
-			min++;
-			sec = 0;
-		}
+            if (sec != oldSec)
+            {
+                networkView.RPC("SyncTime", RPCMode.Others, GameData.time);
+                oldSec = sec;
+            }
+        }
+        else
+        {
+            sec = (GameData.time) - (min * 60);
+
+            if (sec == 60)
+            {
+                min++;
+                sec = 0;
+            }
+        }
+    }
+
+    [RPC]
+    void SyncTime(int time)
+    {
+        GameData.time = time;
     }
 
     void OnGUI()

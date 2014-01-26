@@ -38,8 +38,6 @@ public class InitScene : MonoBehaviour {
                 break;
         }
 
-        GameData.levelID = "0";
-
         Network.isMessageQueueRunning = true;
         Network.SetSendingEnabled(0, true);
 
