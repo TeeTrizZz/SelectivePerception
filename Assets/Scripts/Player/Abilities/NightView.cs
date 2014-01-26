@@ -5,7 +5,7 @@ public class NightView : MonoBehaviour {
 
 	private bool abilityButtonPressed;
 	private bool timerAbility;
-	private Transform prefabSpotlight;
+	public Transform prefabSpotlight;
 	private GameObject character;
 	private Transform Temp;
 	private float startTime;
