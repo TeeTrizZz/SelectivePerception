@@ -7,4 +7,6 @@ public static class GameData {
     public static string levelID;
 	public static int time;
 
+    public static int menuType;
+
 }

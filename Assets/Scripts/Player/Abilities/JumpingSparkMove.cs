@@ -11,7 +11,6 @@ public class JumpingSparkMove : MonoBehaviour {
 	void Start()
 	{
 		startPosY = this.transform.position.y;
-		Debug.Log(startPosY);
 	}
 	void Update()
 	{

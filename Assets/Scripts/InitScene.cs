@@ -38,6 +38,8 @@ public class InitScene : MonoBehaviour {
                 break;
         }
 
+        GameData.levelID = "0";
+
         var go = (GameObject)Network.Instantiate(player, new Vector3(0, 0, 0), Quaternion.identity, 0);
         var cam = (GameObject)Instantiate(Cam, new Vector3(0, 0, 0), Quaternion.identity);
 

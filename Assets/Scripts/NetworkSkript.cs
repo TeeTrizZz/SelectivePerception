@@ -68,6 +68,7 @@ public class NetworkSkript : MonoBehaviour {
 
 	void OnPlayerConnected (NetworkPlayer player) {
 		playerCount++;
+       // SendInfoToClient();
     }
 
     public void RefreshHostList()
@@ -79,6 +80,11 @@ public class NetworkSkript : MonoBehaviour {
     {
         if (msEvent == MasterServerEvent.HostListReceived)
             hostList = MasterServer.PollHostList();
+    }
+
+    void OnConnectedToServer()
+    {
+        GameData.menuType = 5;
     }
 
     public void JoinServer(HostData hostData)
@@ -100,4 +106,16 @@ public class NetworkSkript : MonoBehaviour {
 	public void setLevel(string temp) {
 		GameData.levelID = temp;
 	}
+    /*
+    [RPC]
+    void ReceiveInfoFromServer(string someInfo)
+    {
+        GameData.levelID = someInfo;
+    }
+
+    [RPC]
+    void SendInfoToClient()
+    {
+        networkView.RPC("ReceiveInfoFromServer", RPCMode.Others, GameData.levelID);
+    }*/
 }
