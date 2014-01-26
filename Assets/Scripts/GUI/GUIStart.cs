@@ -118,9 +118,10 @@ public class GUIStart : MonoBehaviour {
 			for (int i = 0; i < levelAmount; i++) {
 				if (GUI.Button (new Rect (0, ((pxDesiredY * 0.76f) / (levelAmount+1))*i, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / (levelAmount+1)), "Level " + (i+1))) {
 					finalLevelFolder = i.ToString();
+					menueType = 5; //show character selection
 				}
 			}
-			if (GUI.Button (new Rect (0, ((levelAmount+1) * pxDesiredY * 0.76f) / 5, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / 5), "Back")) {
+			if (GUI.Button (new Rect (0, ((levelAmount) * pxDesiredY * 0.76f) / (levelAmount +1), pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / 5), "Back")) {
 				netSkript.OnDestroy();
 				menueType = 0;
 			}
@@ -167,6 +168,24 @@ public class GUIStart : MonoBehaviour {
 			break;
 
 		case 5: //show character selection
+			if (GUI.Button (new Rect (0, 0, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / 6), "Nightspark")) {
+				netSkript.setPlayer("nightspark");
+							}
+			if (GUI.Button (new Rect (0, (pxDesiredY * 0.76f) / 6, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / 6), "Trapspark")) {
+				netSkript.setPlayer("trapspark");
+			}
+			if (GUI.Button (new Rect (0, ((6-4) * pxDesiredY * 0.76f) / 6, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / 6), "Wallhackspark")) {
+				netSkript.setPlayer("wallhackspark");
+			}
+			if (GUI.Button (new Rect (0, ((6-3) * pxDesiredY * 0.76f) / 6, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / 6), "Jumpingspark")) {
+				netSkript.setPlayer("jumpingspark");
+			}
+			if (GUI.Button (new Rect (0, ((6-2) * pxDesiredY * 0.76f) / 6, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / 6), "UVSpark")) {
+				netSkript.setPlayer("uvspark");
+			}
+			if (GUI.Button (new Rect (0, ((6-1) * pxDesiredY * 0.76f) / 6, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / 6), "Back")) {
+				menueType = 0;
+			}
 			break;
 
 		

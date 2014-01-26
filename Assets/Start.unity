@@ -236,6 +236,8 @@ MonoBehaviour:
   aspectY: 702
   coverX: .899999976
   coverY: .899999976
+  finalLevelFolder: 
+  finalPlayer: 
   toolbarInt: 0
   toolbarStrings:
   - 800x600
@@ -272,4 +274,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TrapSpark: {fileID: 100000, guid: 5f2e920f64d324582991019c138bd8e3, type: 2}
+  JumpingSpark: {fileID: 100000, guid: 0b4cf7098391c4c899f374685c4ee513, type: 2}
+  NightSpark: {fileID: 100000, guid: 1b58f5a68d1dc4ff09fa2c227a9ae085, type: 2}
+  UVSpark: {fileID: 100002, guid: d28d85257a4ca463485aa3ab578b1bbd, type: 2}
+  WallhackSpark: {fileID: 100002, guid: 9bce8a3c5ba5e482a9521d23b50530d2, type: 2}
   Cam: {fileID: 0}
