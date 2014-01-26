@@ -24,10 +24,15 @@ public class GUIStart : MonoBehaviour {
 	public float coverX;
 	public float coverY;
 
+	//button amount
+	int buttonAmount = 5;
+
 	//for the different menues
+	int menueType = 0;
 	bool showButtons = true;
 	bool showCredits = false;
 	bool showOptions = false;
+	bool showCharacter = false;
 
 	//for the resolution
 	public int toolbarInt = 0;
@@ -69,32 +74,56 @@ public class GUIStart : MonoBehaviour {
 
 		Rect rectResult = new Rect (pxBorderX / 2, pxBorderY / 2, pxDesiredX, pxDesiredY);
 
-		Debug.Log (pxDesiredX);
 
-
-		GUI.BeginGroup (rectResult);
+		GUI.BeginGroup (rectResult); //begin group whole menue
 		GUI.DrawTexture (new Rect (0, 0, rectResult.width, rectResult.height), txrBackground, ScaleMode.StretchToFill);
-		GUI.BeginGroup (new Rect ((pxDesiredX/2)-((pxDesiredX*0.76f)/2), (pxDesiredY/2)-((pxDesiredY*0.76f)/2), pxDesiredX*0.76f, pxDesiredY*0.76f));
+		GUI.BeginGroup (new Rect ((pxDesiredX/2)-((pxDesiredX*0.76f)/2), (pxDesiredY/2)-((pxDesiredY*0.76f)/2), pxDesiredX*0.76f, pxDesiredY*0.76f)); //begin group inner menue
 
-		if (showButtons) {
-			if (GUI.Button (new Rect (0, 0, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / 5), "Start Server")) {
+		switch (menueType) {
+		case 0: //show main menue
+			if (GUI.Button (new Rect (0, 0, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / buttonAmount), "Start Server")) {
+
 			}
-			if (GUI.Button (new Rect (0, (pxDesiredY * 0.76f) / 5, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / 5), "Find Host")) {
+			if (GUI.Button (new Rect (0, (pxDesiredY * 0.76f) / buttonAmount, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / buttonAmount), "Find Host")) {
 			}
-			if (GUI.Button (new Rect (0, (2 * pxDesiredY * 0.76f) / 5, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / 5), "Options")) {
+			if (GUI.Button (new Rect (0, ((buttonAmount-3) * pxDesiredY * 0.76f) / buttonAmount, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / buttonAmount), "Options")) {
 				showButtons = false;
 				showOptions = true;
+				menueType = 2; // show Options
 			}
-			if (GUI.Button (new Rect (0, (3 * pxDesiredY * 0.76f) / 5, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / 5), "Credits")) {
+			if (GUI.Button (new Rect (0, ((buttonAmount-2) * pxDesiredY * 0.76f) / buttonAmount, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / buttonAmount), "Credits")) {
 				showButtons = false;
 				showCredits = true;
-
+				menueType = 3; //show credits
+				
 			}
-			if (GUI.Button (new Rect (0, (4 * pxDesiredY * 0.76f) / 5, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / 5), "Exit")) {
+			if (GUI.Button (new Rect (0, ((buttonAmount-1) * pxDesiredY * 0.76f) / buttonAmount, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / buttonAmount), "Exit")) {
 				Application.Quit ();
 				//is ignored in editor and webplayer
 			}
+			break;
+		
+		case 1: //show level
+			//wait for second player!
+			break;
+
+		case 2: // show find hosts
+			break;
+
+		case 3: // show Options
+			break;
+
+		case 4: //show credits
+			break;
+
+		case 5: //show character selection
+			break;
+
+
+
+
 		}
+
 		if (showCredits) {
 			GUI.Label (new Rect(20,20,pxDesiredX * 0.76f, 3*  (pxDesiredY * 0.76f) / 5), "Developed for Global Game Jam 2014 \n\nat Games Lab Hochschule Furtwangen University\n\nTeam:\n\nSascha Englert, Fabian Gaertner, Sarah Haefele, Matthias Kaufmann, \nStefanie Mueller, Benjamin Ruoff", style);
 			GUI.DrawTexture (new Rect (20, 240, 100, 100), ggjLogo, ScaleMode.StretchToFill);
@@ -130,10 +159,10 @@ public class GUIStart : MonoBehaviour {
 			}
 		}
 
-		GUI.EndGroup ();
+		GUI.EndGroup (); //end group
 
 
-		GUI.EndGroup ();
+		GUI.EndGroup (); //end group whole menue
 
 
 	}
