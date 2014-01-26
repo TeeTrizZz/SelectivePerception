@@ -34,6 +34,7 @@ public class GUIStart : MonoBehaviour
 	private int tempSec;
 	private string tempMin;
 
+	public Vector2 scrollPosition = Vector2.zero;
 
     //button amount
     int buttonAmount = 5;
@@ -156,14 +157,22 @@ public class GUIStart : MonoBehaviour
             case 2: // show host selection
                 if (netSkript.hostList != null)
                 {
-                    for (int i = 0; i < netSkript.hostList.Length; i++)
+				scrollPosition = GUI.BeginScrollView(new Rect (0,0,pxDesiredX * 0.76f, (pxDesiredY * 0.76f) - (pxDesiredY * 0.76f) / 5 ), scrollPosition, new Rect (0,0, pxDesiredX * 0.76f, 100 * netSkript.hostList.Length));
+					
+
+				for (int i = 0; i < netSkript.hostList.Length; i++)
+
                     {
-                        if (GUI.Button(new Rect(400, 100 + (110 * i), 300, 100), netSkript.hostList[i].gameName))
+					if (GUI.Button(new Rect((pxDesiredY * 0.76f) / 2, 100 + (110 * i), 300, 100), netSkript.hostList[i].gameName))
                         {
                             netSkript.JoinServer(netSkript.hostList[i]);
                         }
                     }
+				GUI.EndScrollView();
                 }
+
+				
+				
                 if (GUI.Button(new Rect(0, (4 * pxDesiredY * 0.76f) / 5, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / 5), "Back"))
                 {
                     menuType = 0;
