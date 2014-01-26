@@ -16,6 +16,9 @@ public class NetworkSkript : MonoBehaviour {
 	private GameObject player;
 
     public GameObject Cam;
+	public bool startGame = false;
+	int playerCount = 1;
+	string chosenLevel;
 
 
 
@@ -57,11 +60,16 @@ public class NetworkSkript : MonoBehaviour {
         MasterServer.RegisterHost(typeName, gameName);
     }
 
-    void OnServerInitialized()
+    /*
+	void OnServerInitialized()
     {
         Debug.Log("Server Initializied");
         SpawnPlayer();
-    }
+    }*/
+
+	void OnPlayerConnected (NetworkPlayer player) {
+		playerCount++;
+		}
 
     public void RefreshHostList()
     {
@@ -79,24 +87,10 @@ public class NetworkSkript : MonoBehaviour {
         Network.Connect(hostData);
     }
 
-    void OnConnectedToServer()
-    {
-        SpawnPlayer();
-        Debug.Log("Server Joined");
-    }
 
-    private void SpawnPlayer()
-    {
-        Debug.Log(gameObject);
 
-        var go = (GameObject) Network.Instantiate(player, new Vector3(0, 0, 0), Quaternion.identity, 0);
-        var cam = (GameObject) Instantiate(Cam, new Vector3(0, 0, 0), Quaternion.identity);
 
-        cam.GetComponent<LevelGen>().SetChar(go);
-        cam.GetComponent<LevelGen>().Init();
-        cam.GetComponent<FollowPlayer>().SetTarget(go);
-    }
-
+	
     public void OnDestroy()
     {
         Network.Disconnect();
@@ -104,30 +98,10 @@ public class NetworkSkript : MonoBehaviour {
     }
 
 	public void setPlayer(string temp) {
-		switch (temp) {
-				case "nightspark":
-						player = NightSpark;
-						break;
-				case "trapspark":
-						player = TrapSpark;
-						break;
-
-				case "jumpingspark":
-						player = JumpingSpark;
-						break;
-				case "nightspark":
-						player = NightSpark;
-						break;
-				case "uvspark":
-						player = UVSpark;
-						break;
-				case "wallhackspark":
-						player = WallhackSpark;
-						break;
-	
-				}
+		GameData.playerChar = temp;
 	}
 
 	public void setLevel(string temp) {
+		GameData.levelID = temp;
 	}
 }
