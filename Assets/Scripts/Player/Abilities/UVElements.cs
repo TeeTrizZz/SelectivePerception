@@ -3,18 +3,16 @@ using System.Collections;
 
 public class UVElements : MonoBehaviour {
 
-	GameObject character;
-	GameObject[] text;
-	public MeshRenderer textMesh;
-	static public bool abilityButtonPressed;
-	float startTime;
-	float durationAbility = 4f;
-	bool count;
+	private GameObject character;
+	private GameObject[] text;
+	private MeshRenderer textMesh;
+	private bool abilityButtonPressed;
+	private float startTime;
+	private float durationAbility = 4f;
+	private bool count;
 	
 	void Start () {
 		character = this.transform.gameObject;
-		//Get the Parent Object of all the UV-Text-Elements
-		text = GameObject.FindGameObjectsWithTag("UV-Text");
 	}
 	void Update()
 	{
@@ -29,7 +27,9 @@ public class UVElements : MonoBehaviour {
 			counter();
 		}
 	}
-
+	public void setText(GameObject[] temp){
+		text = temp;
+	}
 	void UVView()
 	{
 		//All of the "UV"-3D-Texts shall be visible to the UV-Spark

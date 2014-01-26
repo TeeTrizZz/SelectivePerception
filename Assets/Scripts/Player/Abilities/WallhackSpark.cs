@@ -6,12 +6,12 @@ public class WallhackSpark : MonoBehaviour {
 	private GameObject gameObjHit;
 	private Renderer wallMesh;
 	private int counterOnce;
-	Color temp;
-	GameObject tempColor;
-	float startTime;
-	float durationAbility = 4f;
-	static public bool abilityButtonPressed;
-	bool count;
+	private Color temp;
+	private GameObject tempColor;
+	private float startTime;
+	private float durationAbility = 4f;
+	private bool abilityButtonPressed;
+	private bool count;
 
 
 	// Use this for initialization

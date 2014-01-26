@@ -2,10 +2,10 @@
 using System.Collections;
 
 public class TrapDetector : MonoBehaviour {
-	static public bool abilityButtonPressed;
-	float startTime;
-	float durationAbility = 4f;
-	bool count;
+	private bool abilityButtonPressed;
+	private float startTime;
+	private float durationAbility = 4f;
+	private bool count;
 
 	void Start () {
 
