@@ -8,18 +8,17 @@ public class NetworkSkript : MonoBehaviour {
 
     public HostData[] hostList;
 
-    public GameObject TrapSpark;
-	public GameObject JumpingSpark;
-	public GameObject NightSpark;
-	public GameObject UVSpark;
-	public GameObject WallhackSpark;
-	private GameObject player;
+    public GameObject MainCam;
 
-    public GameObject Cam;
 	public bool startGame = false;
 	int playerCount = 1;
 	string chosenLevel;
 
+
+    void Awake()
+    {
+        DontDestroyOnLoad(this);
+    }
 
 
 	// Use this for initialization
@@ -35,7 +34,7 @@ public class NetworkSkript : MonoBehaviour {
 
     void OnGUI()
     {
-        if (!Network.isClient && !Network.isServer)
+        /*if (!Network.isClient && !Network.isServer)
         {
             if (GUI.Button(new Rect(100, 100, 250, 100), "Start Server"))
                 StartServer();
@@ -51,25 +50,25 @@ public class NetworkSkript : MonoBehaviour {
                         JoinServer(hostList[i]);
                 }
             }
-        }
+        }*/
     }
 
     public void StartServer()
     {
+        Debug.Log("Start Server");
         Network.InitializeServer(4, 25000, !Network.HavePublicAddress());
         MasterServer.RegisterHost(typeName, gameName);
     }
 
-    /*
 	void OnServerInitialized()
     {
         Debug.Log("Server Initializied");
-        SpawnPlayer();
-    }*/
+        //SpawnPlayer();
+    }
 
 	void OnPlayerConnected (NetworkPlayer player) {
 		playerCount++;
-		}
+    }
 
     public void RefreshHostList()
     {
@@ -86,10 +85,6 @@ public class NetworkSkript : MonoBehaviour {
     {
         Network.Connect(hostData);
     }
-
-
-
-
 	
     public void OnDestroy()
     {
