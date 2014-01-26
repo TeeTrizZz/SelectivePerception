@@ -30,6 +30,10 @@ public class GUIStart : MonoBehaviour
     //sets a value how much screen should be covered (in percent, e.g.: 90% is 0.9)
     public float coverX;
     public float coverY;
+	private int counterStopTime = 0;
+	private int tempSec;
+	private string tempMin;
+
 
     //button amount
     int buttonAmount = 5;
@@ -241,9 +245,14 @@ public class GUIStart : MonoBehaviour
                 break;
 
 		case 7: //end screen
-			int tempSec = GameData.time % 60;
+			if(counterStopTime == 0)
+			{
+				tempSec = GameData.time % 60;
+				tempMin = (GameData.time/60).ToString();
+				counterStopTime++;
+			}
 
-			string endMessage = "Congratulations, you've reached the end!\n\nTime elapsed: " + (GameData.time/60).ToString() + " min " + tempSec + "sec";
+			string endMessage = "Congratulations, you've reached the end!\n\nTime elapsed: " + tempMin + " min " + tempSec + "sec";
 			GUI.Label (new Rect(5, 5, 400, (pxDesiredY * 0.76f) / 6), endMessage, style);
 			break;
 
