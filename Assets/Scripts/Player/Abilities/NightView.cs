@@ -3,13 +3,13 @@ using System.Collections;
 
 public class NightView : MonoBehaviour {
 
-	static public bool abilityButtonPressed;
-	bool timerAbility;
-	public Transform prefabSpotlight;
-	GameObject character;
-	Transform Temp;
-	float startTime;
-	float durationAbility = 4f;
+	private bool abilityButtonPressed;
+	private bool timerAbility;
+	private Transform prefabSpotlight;
+	private GameObject character;
+	private Transform Temp;
+	private float startTime;
+	private float durationAbility = 4f;
 
 	void Start () {
 		character = GameObject.FindWithTag("Player");

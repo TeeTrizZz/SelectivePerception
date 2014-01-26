@@ -2,11 +2,11 @@
 using System.Collections;
 
 public class JumpingSparkMove : MonoBehaviour {
-	static float jumpSparkGravity = 0.0006f;
-	static public bool continueJumpSpark = false;
+	private float jumpSparkGravity = 0.0006f;
+	private bool continueJumpSpark = false;
 	static float jumpSparkSpeed = 0.07f;
-	public static float jumpSparkHeight = jumpSparkSpeed;
-	static public bool abilityButtonPressed;
+	private float jumpSparkHeight = jumpSparkSpeed;
+	private bool abilityButtonPressed;
 	float startPosY;
 	void Start()
 	{
@@ -27,7 +27,7 @@ public class JumpingSparkMove : MonoBehaviour {
 		}
 	}
 	//special skill: Jump high to achieve an aerial perspective to get an overview over the labyrinth
-	public void jumpHighSpark(float startPosY, GameObject tempChar)
+	void jumpHighSpark(float startPosY, GameObject tempChar)
 	{
 		continueJumpSpark = true;
 		jumpSparkHeight = jumpSparkHeight-jumpSparkGravity;

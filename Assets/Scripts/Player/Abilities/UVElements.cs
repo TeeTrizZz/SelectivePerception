@@ -3,18 +3,16 @@ using System.Collections;
 
 public class UVElements : MonoBehaviour {
 
-	GameObject character;
-	GameObject text;
-	public Component[] textMesh;
-	static public bool abilityButtonPressed;
-	float startTime;
-	float durationAbility = 4f;
-	bool count;
+	private GameObject character;
+	private GameObject[] text;
+	private MeshRenderer textMesh;
+	private bool abilityButtonPressed;
+	private float startTime;
+	private float durationAbility = 4f;
+	private bool count;
 	
 	void Start () {
 		character = this.transform.gameObject;
-		//Get the Parent Object of all the UV-Text-Elements
-		text = GameObject.Find("UVVisionElements");
 	}
 	void Update()
 	{
@@ -29,13 +27,15 @@ public class UVElements : MonoBehaviour {
 			counter();
 		}
 	}
-
+	public void setText(GameObject[] temp){
+		text = temp;
+	}
 	void UVView()
 	{
 		//All of the "UV"-3D-Texts shall be visible to the UV-Spark
-		textMesh = text.GetComponentsInChildren<MeshRenderer>();
-		foreach (MeshRenderer texMe in textMesh) {
-			texMe.enabled = true;
+		foreach (GameObject gO in text) {
+			textMesh = gO.GetComponent<MeshRenderer>();
+			textMesh.enabled = true;
 		}
 		startTime = Time.time;
 		count = true;
@@ -43,9 +43,9 @@ public class UVElements : MonoBehaviour {
 	void disableUVView()
 	{
 		//All of the "UV"-3D-Texts shall be visible to the UV-Spark
-		textMesh = text.GetComponentsInChildren<MeshRenderer>();
-		foreach (MeshRenderer texMe in textMesh) {
-			texMe.enabled = false;
+		foreach (GameObject gO in text) {
+			textMesh = gO.GetComponent<MeshRenderer>();
+			textMesh.enabled = false;
 		}
 		count = false;
 	}
