@@ -17,7 +17,7 @@ public class NetworkSkript : MonoBehaviour {
 
     void Awake()
     {
-        DontDestroyOnLoad(this);
+ 
     }
 
 
@@ -100,7 +100,7 @@ public class NetworkSkript : MonoBehaviour {
 
 	public void setPlayer(string temp) {
 		GameData.playerChar = temp;
-		Application.LoadLevel ("MainScene");
+        this.GetComponent<InitScene>().InitGame();
 	}
 
 	public void setLevel(string temp) {
