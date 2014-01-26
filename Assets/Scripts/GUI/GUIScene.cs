@@ -25,9 +25,14 @@ public class GUIScene : MonoBehaviour
 
     public GUIStyle style;
 
+	private int min = 0;
+	private int sec = 0;
+	private int overallStartTime;
+
     // Use this for initialization
     void Start()
     {
+		startTime = Time.time;
 		string characterType = GameData.playerChar;
 		switch (characterType) {
 			case ("nightspark"):
@@ -55,10 +60,20 @@ public class GUIScene : MonoBehaviour
     void Update()
     {
 
+		GameData.time = (int) Mathf.Round((Time.time - overallStartTime));
+		sec = (GameData.time) - (min * 60);
+
+		if (sec == 60) {
+			min++;
+			sec = 0;
+		}
     }
 
     void OnGUI()
     {
+
+
+		GUI.Label (new Rect (Screen.width / 2, 5, 100, 60), min.ToString () + " min " + sec.ToString() + " sec", style);
 
         if (GUI.Button(new Rect(5, 5, 105, 105), skill) || Input.GetKey("f"))
         {

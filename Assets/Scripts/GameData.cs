@@ -5,5 +5,6 @@ public static class GameData {
 
     public static string playerChar;
     public static string levelID;
+	public static int time;
 
 }
