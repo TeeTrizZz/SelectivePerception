@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+[RequireComponent(typeof(AudioSource))]
 
 public class SoundStartscreen : MonoBehaviour {
 
@@ -7,6 +8,7 @@ public class SoundStartscreen : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		audio.loop = true;
 		AudioSource.PlayClipAtPoint (intro, gameObject.transform.position);
 	}
 	
