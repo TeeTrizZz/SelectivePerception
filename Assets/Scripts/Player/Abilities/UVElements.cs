@@ -4,8 +4,8 @@ using System.Collections;
 public class UVElements : MonoBehaviour {
 
 	GameObject character;
-	GameObject text;
-	public Component[] textMesh;
+	GameObject[] text;
+	public MeshRenderer textMesh;
 	static public bool abilityButtonPressed;
 	float startTime;
 	float durationAbility = 4f;
@@ -14,7 +14,7 @@ public class UVElements : MonoBehaviour {
 	void Start () {
 		character = this.transform.gameObject;
 		//Get the Parent Object of all the UV-Text-Elements
-		text = GameObject.Find("UVVisionElements");
+		text = GameObject.FindGameObjectsWithTag("UV-Text");
 	}
 	void Update()
 	{
@@ -33,9 +33,9 @@ public class UVElements : MonoBehaviour {
 	void UVView()
 	{
 		//All of the "UV"-3D-Texts shall be visible to the UV-Spark
-		textMesh = text.GetComponentsInChildren<MeshRenderer>();
-		foreach (MeshRenderer texMe in textMesh) {
-			texMe.enabled = true;
+		foreach (GameObject gO in text) {
+			textMesh = gO.GetComponent<MeshRenderer>();
+			textMesh.enabled = true;
 		}
 		startTime = Time.time;
 		count = true;
@@ -43,9 +43,9 @@ public class UVElements : MonoBehaviour {
 	void disableUVView()
 	{
 		//All of the "UV"-3D-Texts shall be visible to the UV-Spark
-		textMesh = text.GetComponentsInChildren<MeshRenderer>();
-		foreach (MeshRenderer texMe in textMesh) {
-			texMe.enabled = false;
+		foreach (GameObject gO in text) {
+			textMesh = gO.GetComponent<MeshRenderer>();
+			textMesh.enabled = false;
 		}
 		count = false;
 	}
