@@ -34,8 +34,12 @@ public class GUIStart : MonoBehaviour {
 	public int toolbarInt = 0;
 	public string[] toolbarStrings = new string[]{"800x600", "1920x1080"};
 
+	//script for network
+	NetworkSkript netSkript;
+
 	// Use this for initialization
 	void Start () {
+		netSkript = this.GetComponent<NetworkSkript> ();
 		style.normal.textColor = Color.white;
 
 		style.fontSize = 20;
@@ -78,11 +82,17 @@ public class GUIStart : MonoBehaviour {
 		switch (menueType) {
 		case 0: //show main menue
 			if (GUI.Button (new Rect (0, 0, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / buttonAmount), "Start Server")) {
-				menueType = 1; //show level selection
+				if (!Network.isClient && !Network.isServer) {
+					netSkript.StartServer(); //starts server
+					menueType = 1; //show level selection
+				}
 
 			}
 			if (GUI.Button (new Rect (0, (pxDesiredY * 0.76f) / buttonAmount, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / buttonAmount), "Find Host")) {
-				menueType = 2; //show host selection
+				if (!Network.isClient && !Network.isServer) {
+					netSkript.RefreshHostList();
+					menueType = 2; //show host selection
+				}
 			}
 			if (GUI.Button (new Rect (0, ((buttonAmount-3) * pxDesiredY * 0.76f) / buttonAmount, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / buttonAmount), "Options")) {
 				menueType = 3; // show Options
@@ -99,11 +109,23 @@ public class GUIStart : MonoBehaviour {
 		
 		case 1: //show level selection
 			//wait for second player!
+			if (GUI.Button (new Rect (0, (4 * pxDesiredY * 0.76f) / 5, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / 5), "Back")) {
+				netSkript.OnDestroy();
+				menueType = 0;
+			}
 			break;
 
 		case 2: // show host selection
+			if (netSkript.hostList != null)
+			{
+				for (int i = 0; i < netSkript.hostList.Length; i++)
+				{
+					if (GUI.Button(new Rect(400, 100 + (110 * i), 300, 100), netSkript.hostList[i].gameName))
+						netSkript.JoinServer(netSkript.hostList[i]);
+				}
+			}
 			break;
-
+			
 		case 3: // show Options
 			GUI.Label (new Rect(20,20, pxDesiredX * 0.76f, 40), "Set your Screen Resolution:", style);
 			
