@@ -198,7 +198,7 @@ public class LevelGen : MonoBehaviour {
                 }
 
 
-                var tmp = (GameObject) Instantiate(tmpObj, new Vector3(posX, posY, posZ), quat);
+                Instantiate(tmpObj, new Vector3(posX, posY, posZ), quat);
 
                 if (isCr)
                 {

@@ -3,8 +3,8 @@ using System.Collections;
 
 public class NetworkSkript : MonoBehaviour {
 
-    private const string typeName = "UniqueGameName";
-    private const string gameName = "RoomName";
+    private const string typeName = "VisualMaze";
+    private const string gameName = "Room";
 
     public HostData[] hostList;
 
@@ -32,32 +32,15 @@ public class NetworkSkript : MonoBehaviour {
             Application.Quit();
 	}
 
-    void OnGUI()
-    {
-        /*if (!Network.isClient && !Network.isServer)
-        {
-            if (GUI.Button(new Rect(100, 100, 250, 100), "Start Server"))
-                StartServer();
-
-            if (GUI.Button(new Rect(100, 250, 250, 100), "Refresh Hosts"))
-                RefreshHostList(); 
-
-            if (hostList != null)
-            {
-                for (int i = 0; i < hostList.Length; i++)
-                {
-                    if (GUI.Button(new Rect(400, 100 + (110 * i), 300, 100), hostList[i].gameName))
-                        JoinServer(hostList[i]);
-                }
-            }
-        }*/
-    }
-
     public void StartServer()
     {
         Debug.Log("Start Server");
         Network.InitializeServer(4, 25000, !Network.HavePublicAddress());
-        MasterServer.RegisterHost(typeName, gameName);
+
+        int id = Random.Range(0, 1000);
+        GameData.serverID = gameName + id;
+
+        MasterServer.RegisterHost(typeName, GameData.serverID);
     }
 
 	void OnServerInitialized()
@@ -68,7 +51,7 @@ public class NetworkSkript : MonoBehaviour {
 
 	void OnPlayerConnected (NetworkPlayer player) {
 		playerCount++;
-       // SendInfoToClient();
+        SendInfoToClient();
     }
 
     public void RefreshHostList()
@@ -100,16 +83,18 @@ public class NetworkSkript : MonoBehaviour {
 
 	public void setPlayer(string temp) {
 		GameData.playerChar = temp;
+        Destroy(MainCam);
         this.GetComponent<InitScene>().InitGame();
 	}
 
 	public void setLevel(string temp) {
 		GameData.levelID = temp;
 	}
-    /*
+    
     [RPC]
     void ReceiveInfoFromServer(string someInfo)
     {
+        Debug.Log("Ich setze: " + someInfo);
         GameData.levelID = someInfo;
     }
 
@@ -117,5 +102,5 @@ public class NetworkSkript : MonoBehaviour {
     void SendInfoToClient()
     {
         networkView.RPC("ReceiveInfoFromServer", RPCMode.Others, GameData.levelID);
-    }*/
+    }
 }

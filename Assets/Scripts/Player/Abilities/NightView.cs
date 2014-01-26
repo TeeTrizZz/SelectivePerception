@@ -47,7 +47,7 @@ public class NightView : MonoBehaviour {
 	void counter()
 	{
 		int dif = Mathf.RoundToInt(durationAbility - (Time.time - startTime));
-		Debug.Log(dif);
+
 		if (dif < 0) {
 		deactivateNightView();
 		}

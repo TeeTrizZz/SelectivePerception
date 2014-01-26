@@ -90,6 +90,8 @@ public class GUIScene : MonoBehaviour
                 startTime = Time.time; //save start time after clicking the button
             }
         }
+		GUI.Label (new Rect (100, 5, 40, 40), "f", hostStyle);
+
         //show cooldown time
         if (toggleState)
         {

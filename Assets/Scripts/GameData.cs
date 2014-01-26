@@ -9,4 +9,6 @@ public static class GameData {
 
     public static int menuType;
 
+    public static string serverID;
+
 }
