@@ -110,8 +110,8 @@ public class LevelGen : MonoBehaviour {
 
     public void Init()
     {
-        var filename1 = "External/Level/Level.txt";
-        var filename2 = "External/Level/Light.txt";
+        var filename1 = "External/Level" + GameData.levelID + "/Level.txt";
+        var filename2 = "External/Level" + GameData.levelID + "/Light.txt";
 
         var prefix = "";
 
