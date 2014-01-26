@@ -14,13 +14,13 @@ public class PlayerMove : MonoBehaviour {
     float _rotX;
     float delta = 0f;
 
-    public bool SetMeBack;
-    public bool SetMeSomeWhere;
+    public bool BlockMe;
+    public GameObject SetMeSomeWhere;
 
 	// Use this for initialization
 	void Start () {
-        SetMeBack = false;
-        SetMeSomeWhere = false;
+        BlockMe = false;
+        SetMeSomeWhere = null;
 
 		jumpHeight = speedJumpStart;
 		startPosYAxis = this.transform.position.y;
@@ -33,31 +33,31 @@ public class PlayerMove : MonoBehaviour {
 
 	void move()
 	{
-        if (networkView.isMine)
+        if (networkView.isMine && SetMeSomeWhere == null)
         {
             // rotate
             _rotY += Input.GetAxis("Mouse X") * 2.0f;
             this.transform.eulerAngles = new Vector3(0, _rotY, 0);
 
-            //Walk forward
-            if (Input.GetAxis("Vertical") != 0)
+            if (!BlockMe)
             {
-                var y = transform.position.y;
-                transform.Translate(transform.forward * Input.GetAxis("Vertical") * Time.deltaTime * speed, Space.World);
-                transform.position = new Vector3(transform.position.x, y, transform.position.z);
-            }
+                //Walk forward
+                if (Input.GetAxis("Vertical") != 0)
+                {
+                    transform.Translate(transform.forward * Input.GetAxis("Vertical") * Time.deltaTime * speed, Space.World);
+                    transform.position = new Vector3(transform.position.x, 0.4f, transform.position.z);
+                }
 
-            //Rotate
-            if (Input.GetAxis("Horizontal") != 0)
-            {
-                transform.Translate(transform.right * Input.GetAxis("Horizontal") * Time.deltaTime * speed, Space.World);
-            }
+                //Rotate
+                if (Input.GetAxis("Horizontal") != 0)
+                    transform.Translate(transform.right * Input.GetAxis("Horizontal") * Time.deltaTime * speed, Space.World);
 
-            //Jump
-            if (Input.GetAxis("Jump") != 0 || continueJump == true)
-            {
-                continueJump = true;
-                jump(startPosYAxis);
+                //Jump
+                if (Input.GetAxis("Jump") != 0 || continueJump == true)
+                {
+                    continueJump = true;
+                    jump(startPosYAxis);
+                }
             }
         }
 	}
@@ -79,15 +79,20 @@ public class PlayerMove : MonoBehaviour {
     public void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Wire")
-            SetMeBack = true;
+            BlockMe = true;
 
         if (other.tag == "Trap")
-            SetMeSomeWhere = true;
+            SetMeSomeWhere = other.gameObject;
     }
 
     public void SetYouBack()
     {
-        SetMeBack = false;
-        SetMeSomeWhere = false;
+        SetMeSomeWhere = null;
+        transform.position = new Vector3(transform.position.x, 0.4f, transform.position.z);
+    }
+
+    public void YouAreFree()
+    {
+        BlockMe = false;
     }
 }

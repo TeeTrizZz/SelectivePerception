@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
+
 public class LevelGen : MonoBehaviour {
 
     public GameObject _wall;
@@ -18,20 +19,46 @@ public class LevelGen : MonoBehaviour {
     private List<Vector3> emptyFields;
 
 
-	void Update () {
-        if (moveScript != null && moveScript.SetMeBack)
+    void Update()
+    {
+        if (moveScript != null)
         {
-            Char.transform.position = new Vector3(startX, 0.4f, startZ);
-            moveScript.SetYouBack();
-        }
+            if (moveScript.BlockMe)
+                StartCoroutine(BlockChar());
+            else
+                StopCoroutine("BlockChar");
 
-        if (moveScript != null && moveScript.SetMeSomeWhere)
+            if (moveScript != null)
+                if (moveScript.SetMeSomeWhere != null)
+                    StartCoroutine(FallDown());
+                else
+                    StopCoroutine("FallDown");
+        }
+    }
+
+    IEnumerator BlockChar()
+    {
+        yield return new WaitForSeconds(5);
+        moveScript.YouAreFree();
+    }
+
+    IEnumerator FallDown()
+    {
+        moveScript.SetMeSomeWhere.GetComponent<Collider>().enabled = false;
+        Char.GetComponent<Rigidbody>().useGravity = true;
+
+        yield return new WaitForSeconds(2);
+
+        if (moveScript.SetMeSomeWhere != null)
         {
-            int randomIndex = Random.Range(0, emptyFields.Count-1);
+            Char.GetComponent<Rigidbody>().useGravity = false;
+            moveScript.SetMeSomeWhere.GetComponent<Collider>().enabled = true;
+            
+            int randomIndex = Random.Range(0, emptyFields.Count - 1);
             Char.transform.position = emptyFields[randomIndex];
             moveScript.SetYouBack();
         }
-	}
+    }
 
     public void SetChar(GameObject _char)
     {
