@@ -13,6 +13,7 @@ public class LevelGen : MonoBehaviour {
     public GameObject _start;
     public GameObject _goal;
     public GameObject _text;
+    public GameObject _particle;
 	public GameObject Char;
 
     private float startX = 0f;
@@ -21,18 +22,42 @@ public class LevelGen : MonoBehaviour {
     private PlayerMove moveScript;
     private List<Vector3> emptyFields;
 
+    private bool coRunning;
+
+    void Start()
+    {
+        coRunning = false;
+    }
+
     void Update()
     {
         if (moveScript != null)
         {
             if (moveScript.BlockMe)
-                StartCoroutine(BlockChar());
+            {
+                if (!coRunning)
+                {
+                    coRunning = true;
+                    StartCoroutine(PlayParticle());
+                    StartCoroutine(BlockChar());
+                }
+            }
             else
+            {
+                StopCoroutine("PlayParticle");
                 StopCoroutine("BlockChar");
+               // coRunning = false;
+            }
 
             if (moveScript != null)
                 if (moveScript.SetMeSomeWhere != null)
-                    StartCoroutine(FallDown());
+                {
+                    if (!coRunning)
+                    {
+                        coRunning = true;
+                        StartCoroutine(FallDown());
+                    }
+                }
                 else
                     StopCoroutine("FallDown");
         }
@@ -42,6 +67,7 @@ public class LevelGen : MonoBehaviour {
     {
         yield return new WaitForSeconds(5);
         moveScript.YouAreFree();
+        coRunning = false;
     }
 
     IEnumerator FallDown()
@@ -58,8 +84,22 @@ public class LevelGen : MonoBehaviour {
             
             int randomIndex = Random.Range(0, emptyFields.Count - 1);
             Char.transform.position = emptyFields[randomIndex];
+
+            StartCoroutine(PlayParticle());
+
             moveScript.SetYouBack();
         }
+
+        coRunning = false;
+    }
+
+    IEnumerator PlayParticle()
+    {
+        var tmp = (GameObject)Network.Instantiate(_particle, Char.transform.position + Char.transform.forward * 0.01f, Quaternion.identity, 0);
+
+        yield return new WaitForSeconds(5);
+
+        Network.Destroy(tmp);
     }
 
     public void SetChar(GameObject _char)
