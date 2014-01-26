@@ -86,6 +86,7 @@ GameObject:
   - 114: {fileID: 455971806}
   - 114: {fileID: 455971805}
   - 114: {fileID: 455971809}
+  - 148: {fileID: 455971810}
   m_Layer: 0
   m_Name: GUI
   m_TagString: Untagged
@@ -233,6 +234,18 @@ MonoBehaviour:
   UVSpark: {fileID: 100002, guid: d28d85257a4ca463485aa3ab578b1bbd, type: 2}
   WallhackSpark: {fileID: 100002, guid: 9bce8a3c5ba5e482a9521d23b50530d2, type: 2}
   Cam: {fileID: 100000, guid: e72657b564b80574dbcd05a063bb3fb7, type: 2}
+--- !u!148 &455971810
+NetworkView:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 455971804}
+  m_Enabled: 1
+  m_StateSynchronization: 1
+  m_Observed: {fileID: 455971808}
+  m_ViewID:
+    m_ID: 1
+    m_Type: 1
 --- !u!1001 &966403655
 Prefab:
   m_ObjectHideFlags: 0
