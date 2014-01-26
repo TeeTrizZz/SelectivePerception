@@ -32,15 +32,15 @@ public class GUIScene : MonoBehaviour {
 
 	void OnGUI() {
 			
-				if (GUI.Button (new Rect (5 , 5, 105, 105), skill)) {
-					if (!toggleState) {
+		if (GUI.Button (new Rect (5 , 5, 105, 105), skill) || Input.GetKey("f")) {
+			if (!toggleState ) {
 								toggleState = true;
 								doAbility = true;
 								startTime = Time.time; //save start time after clicking the button
 						}
 				}
 				//show cooldown time
-				if (toggleState) {
+		if (toggleState) {
 					
 					dif = Mathf.RoundToInt(coolDown - (Time.time - startTime));
 					GUI.Label (new Rect (5, 5, 105, 105), dif.ToString(), style);
