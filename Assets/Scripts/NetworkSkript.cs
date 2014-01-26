@@ -99,6 +99,7 @@ public class NetworkSkript : MonoBehaviour {
 
 	public void setPlayer(string temp) {
 		GameData.playerChar = temp;
+		Application.LoadLevel ("MainScene");
 	}
 
 	public void setLevel(string temp) {
