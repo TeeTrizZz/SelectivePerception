@@ -29,10 +29,6 @@ public class GUIStart : MonoBehaviour {
 
 	//for the different menues
 	int menueType = 0;
-	bool showButtons = true;
-	bool showCredits = false;
-	bool showOptions = false;
-	bool showCharacter = false;
 
 	//for the resolution
 	public int toolbarInt = 0;
@@ -82,19 +78,17 @@ public class GUIStart : MonoBehaviour {
 		switch (menueType) {
 		case 0: //show main menue
 			if (GUI.Button (new Rect (0, 0, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / buttonAmount), "Start Server")) {
+				menueType = 1; //show level selection
 
 			}
 			if (GUI.Button (new Rect (0, (pxDesiredY * 0.76f) / buttonAmount, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / buttonAmount), "Find Host")) {
+				menueType = 2; //show host selection
 			}
 			if (GUI.Button (new Rect (0, ((buttonAmount-3) * pxDesiredY * 0.76f) / buttonAmount, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / buttonAmount), "Options")) {
-				showButtons = false;
-				showOptions = true;
-				menueType = 2; // show Options
+				menueType = 3; // show Options
 			}
 			if (GUI.Button (new Rect (0, ((buttonAmount-2) * pxDesiredY * 0.76f) / buttonAmount, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / buttonAmount), "Credits")) {
-				showButtons = false;
-				showCredits = true;
-				menueType = 3; //show credits
+				menueType = 4; //show credits
 				
 			}
 			if (GUI.Button (new Rect (0, ((buttonAmount-1) * pxDesiredY * 0.76f) / buttonAmount, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / buttonAmount), "Exit")) {
@@ -103,41 +97,16 @@ public class GUIStart : MonoBehaviour {
 			}
 			break;
 		
-		case 1: //show level
+		case 1: //show level selection
 			//wait for second player!
 			break;
 
-		case 2: // show find hosts
+		case 2: // show host selection
 			break;
 
 		case 3: // show Options
-			break;
-
-		case 4: //show credits
-			break;
-
-		case 5: //show character selection
-			break;
-
-
-
-
-		}
-
-		if (showCredits) {
-			GUI.Label (new Rect(20,20,pxDesiredX * 0.76f, 3*  (pxDesiredY * 0.76f) / 5), "Developed for Global Game Jam 2014 \n\nat Games Lab Hochschule Furtwangen University\n\nTeam:\n\nSascha Englert, Fabian Gaertner, Sarah Haefele, Matthias Kaufmann, \nStefanie Mueller, Benjamin Ruoff", style);
-			GUI.DrawTexture (new Rect (20, 240, 100, 100), ggjLogo, ScaleMode.StretchToFill);
-			GUI.DrawTexture (new Rect (150, 240, 247, 100), hfuLogo, ScaleMode.StretchToFill);
-			if (GUI.Button (new Rect (0, (4 * pxDesiredY * 0.76f) / 5, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / 5), "Back")) {
-				showCredits = false;
-				showButtons = true;
-			}
-
-		}
-
-		if (showOptions) {
 			GUI.Label (new Rect(20,20, pxDesiredX * 0.76f, 40), "Set your Screen Resolution:", style);
-
+			
 			GUI.BeginGroup(new Rect (0,60,pxDesiredX * 0.76f, 100));
 			if (GUI.Button (new Rect(0,0, (pxDesiredX * 0.76f)/2, 50), "800x600")){
 				Screen.SetResolution (800,600,true);
@@ -145,21 +114,32 @@ public class GUIStart : MonoBehaviour {
 			if (GUI.Button (new Rect((pxDesiredX * 0.76f)/2,0, (pxDesiredX * 0.76f)/2, 50), "1920x1080")){
 				Screen.SetResolution (1920,1080,true);
 			}
-			/*if (GUI.Button (new Rect(0,60, 200, 40), "1920x1080", style)){
-				Screen.SetResolution (1920,1080,true);
-			}*/
-
 			GUI.EndGroup();
-
-
-
+						
 			if (GUI.Button (new Rect (0, (4 * pxDesiredY * 0.76f) / 5, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / 5), "Back")) {
-				showOptions = false;
-				showButtons = true;
+				menueType = 0;
 			}
-		}
+			break;
 
-		GUI.EndGroup (); //end group
+		case 4: //show credits
+			GUI.Label (new Rect(20,20,pxDesiredX * 0.76f, 3*  (pxDesiredY * 0.76f) / 5), "Developed for Global Game Jam 2014 \n\nat Games Lab Hochschule Furtwangen University\n\nTeam:\n\nSascha Englert, Fabian Gaertner, Sarah Haefele, Matthias Kaufmann, \nStefanie Mueller, Benjamin Ruoff", style);
+			GUI.DrawTexture (new Rect (20, 240, 100, 100), ggjLogo, ScaleMode.StretchToFill);
+			GUI.DrawTexture (new Rect (150, 240, 247, 100), hfuLogo, ScaleMode.StretchToFill);
+			if (GUI.Button (new Rect (0, (4 * pxDesiredY * 0.76f) / 5, pxDesiredX * 0.76f, (pxDesiredY * 0.76f) / 5), "Back")) {
+				menueType = 0;
+			}
+			break;
+
+		case 5: //show character selection
+			break;
+
+		
+		} //end switch
+
+
+
+
+		GUI.EndGroup (); //end inner menue group
 
 
 		GUI.EndGroup (); //end group whole menue

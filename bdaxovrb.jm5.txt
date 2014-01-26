@@ -1,0 +1,52 @@
+﻿Merge branch 'master' of https://github.com/hs-furtwangen/SelectivePerception
+
+Conflicts:
+	Assets/Textures/skillWallhackWisp.png.meta
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch and 'origin/master' have diverged,
+# and have 1 and 4 different commits each, respectively.
+#   (use "git pull" to merge the remote branch into yours)
+#
+# All conflicts fixed but you are still merging.
+#   (use "git commit" to conclude merge)
+#
+# Changes to be committed:
+#
+#	deleted:    Assets/CharAbilities.unity
+#	deleted:    Assets/CharAbilities.unity.meta
+#	deleted:    Assets/GameOver.unity
+#	deleted:    Assets/GameOver.unity.meta
+#	modified:   Assets/Materials/rockbottom2.mat
+#	modified:   Assets/NetworkTest.unity
+#	deleted:    Assets/NetworkTestFaehifkeiten.unity
+#	deleted:    Assets/NetworkTestFaehifkeiten.unity.meta
+#	modified:   Assets/Prefabs/Cam.prefab
+#	modified:   Assets/Prefabs/PlaneGoal.prefab
+#	modified:   Assets/Prefabs/PlaneStart.prefab
+#	deleted:    Assets/Scene.unity
+#	deleted:    Assets/Scene.unity.meta
+#	modified:   Assets/Scripts/LevelGen.cs
+#	modified:   Assets/Scripts/Player/PlayerMove.cs
+#	new file:   Assets/Sounds/ambient_background.mp3
+#	new file:   Assets/Sounds/ambient_background.mp3.meta
+#	modified:   Assets/Textures/skillWallhackWisp.png.meta
+#	modified:   SelectivePerception-csharp.v11.suo
+#
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	modified:   Assets/Materials/stahlstange.mat
+#	modified:   ProjectSettings/EditorSettings.asset
+#	modified:   ProjectSettings/Physics2DSettings.asset
+#
+
